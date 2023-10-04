@@ -27,16 +27,24 @@ In this assignment, you will work collaboratively with your assigned teammate to
 2. Navigate to the directory where you want to work on your local repository, or create a new directory if needed.
 3. Use the following command to add a remote named "upstream" that points to your teammate P2's fork:
    ```bash
-   git remote add upstream https://github.com/Teammate_P2_username/repository_name.git
+   git remote add partner_upstream https://github.com/Teammate_P2_username/repository_name.git
    ```
    Replace `Teammate_P2_username` with P2's GitHub username and `repository_name` with the name of P2's forked repository.
 4. Verify that the upstream repository has been added correctly by running:
    ```bash
    git remote -v
    ```
-   You should see "upstream" listed as a remote with the URL pointing to P2's fork.
+   You should see "partner_upstream" listed as a remote with the URL pointing to P2's fork.
 
 **6. Initial Pull Request (PR) to P1's Fork:**
+   - Do 
+```
+git status #to see your changes
+git add . # to add all changes
+git commit -m "Message goes here"
+git push origin main
+```
+   - Go to UI and you will see your fork one commit ahead of upstream.
    - P2 will initiate the collaboration by submitting a pull request to P1's fork (P1's upstream repository).
    - P1 should review P2's pull request and merge it into their fork.
 
