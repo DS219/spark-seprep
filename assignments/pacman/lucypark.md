@@ -1,0 +1,5 @@
+ type: 'Unknown',
+    servers: Map(1) { 'mongodb:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
