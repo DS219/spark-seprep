@@ -1,0 +1,1 @@
+Hello! My name is Janna and I am a senior here at BU. My current favorite programming language is java. I'm using it in my cs 440 class where we have been making very very basic level video games. I am enjoying looking through libraries/documentations and playing around with what java has to offer in terms of AI and video games. :)
