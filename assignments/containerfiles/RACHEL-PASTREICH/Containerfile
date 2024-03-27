@@ -1,0 +1,5 @@
+FROM alpine
+WORKDIR /mydir
+ADD assign6 /mydir
+RUN chmod +x /mydir/assign6
+CMD ./assign6
