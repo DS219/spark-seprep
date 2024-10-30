@@ -1,0 +1,13 @@
+FROM alpine
+
+WORKDIR /mydir
+
+ADD warren_hall_webscraper.py /mydir
+
+RUN apk add --no-cache python3 py3-pip bs4
+
+# Make the Python script executable
+RUN chmod +x /mydir/warren_hall_webscraper.py
+
+# Set the command to execute the Python script
+CMD ["python3", "./warren_hall_webscraper.py"]
