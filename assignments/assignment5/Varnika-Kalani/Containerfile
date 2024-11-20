@@ -1,0 +1,4 @@
+FROM python
+WORKDIR /app
+COPY final.py .
+CMD ["python", "/app/final.py"]

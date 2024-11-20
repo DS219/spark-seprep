@@ -7,6 +7,9 @@
    ```
    pip3 install huggingface-hub
    ```
+   ```
+   brew install huggingface-cli
+   ```
 5. Download the model:
    ```
    huggingface-cli download TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q4_K_M.gguf --local-dir . --local-dir-use-symlinks False

@@ -1,0 +1,5 @@
+FROM python:3.9-slim
+WORKDIR /mydir
+COPY namemeaning.py /mydir/namemeaning.py
+CMD ["python", "/mydir/namemeaning.py"]
+
