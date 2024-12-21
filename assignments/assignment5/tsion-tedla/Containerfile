@@ -1,0 +1,5 @@
+FROM python
+WORKDIR mydir
+ADD leetcode-smallest_even_multiple.py /mydir
+#RUN chmod +x /mydir/leetcode-smallest_even_multiple.py
+CMD ["python", "/mydir/leetcode-smallest_even_multiple.py"]
