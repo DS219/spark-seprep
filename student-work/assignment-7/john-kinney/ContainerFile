@@ -1,0 +1,6 @@
+FROM alpine
+WORKDIR mydir
+ADD quote.sh /mydir
+RUN chmod +x /mydir/quote.sh
+RUN apk add curl jq
+CMD ./quote.sh
