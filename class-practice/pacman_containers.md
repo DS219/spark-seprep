@@ -1,22 +1,10 @@
-## Fork and clone PacMan repository
+## Clone PacMan repository
 
 ```
-# first, fork https://github.com/sallyom/mongo-pacman.git
-
-# from the terminal, run
 cd /your/git/repos
-git clone git@github.com:yourname/mongo-pacman.git
+git clone [git@github.com:yourname/mongo-pacman.git](https://github.com/sallyom/mongo-pacman.git)
 cd mongo-pacman
 ```
-
-## Check out a new branch
-
-```bash
-git checkout -b [new-branch]
-```
-
-We'll roughly follow the [README.md](https://github.com/sallyom/mongo-pacman/tree/main/frontend)
-for the program's frontend.
 
 ## Build PacMan
 
