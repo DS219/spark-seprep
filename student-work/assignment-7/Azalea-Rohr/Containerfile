@@ -1,0 +1,10 @@
+# Use R base image
+FROM r-base
+
+RUN R -e "install.packages('ggplot2', repos='http://cran.rstudio.com/')"
+WORKDIR /app
+
+COPY stats_analysis.R /app/stats_analysis.R
+RUN chmod +x /app/stats_analysis.R
+CMD ["Rscript", "/app/stats_analysis.R"]
+
