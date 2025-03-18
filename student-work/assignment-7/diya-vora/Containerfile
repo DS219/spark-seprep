@@ -1,0 +1,8 @@
+FROM python:3.9-alpine
+WORKDIR /mydir
+COPY mycode.py /mydir
+RUN chmod +x /mydir/mycode.py
+CMD ["python3", "/mydir/mycode.py"]
+
+ 
+
