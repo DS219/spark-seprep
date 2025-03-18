@@ -1,0 +1,8 @@
+FROM python:3.11-alpine
+WORKDIR /mydir
+ADD Assignment7.py /mydir
+RUN chmod +x /mydir/Assignment7.py #Ensures the script is executable when ran directly
+RUN apk add curl 
+CMD ["python","Assignment7.py"]#This runs the script using the Python interpreter
+
+
