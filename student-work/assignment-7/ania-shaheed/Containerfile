@@ -1,0 +1,5 @@
+FROM python:3.9-alpine
+WORKDIR /workdir
+ADD script.py /workdir
+RUN chmod +x script.py
+CMD ["python", "./script.py"]
