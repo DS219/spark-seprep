@@ -1,0 +1,6 @@
+FROM python
+WORKDIR /evan-leong
+ADD script.py /evan-leong/script.py
+RUN chmod +x /evan-leong/script.py
+CMD ["python", "/evan-leong/script.py"]
+
