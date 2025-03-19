@@ -1,0 +1,5 @@
+FROM python
+WORKDIR /mydir
+ADD generate_joke.py /mydir/
+CMD ["python3", "generate_joke.py"]
+
