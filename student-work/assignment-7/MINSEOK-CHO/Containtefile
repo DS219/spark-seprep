@@ -1,0 +1,6 @@
+FROM alpine
+WORKDIR mydir
+ADD Merge_Alt.py /mydir
+RUN chmod +x /mydir/Merge_Alt.py
+RUN apk add --no-cache python3
+CMD ["python3", "./Merge_Alt.py"]
