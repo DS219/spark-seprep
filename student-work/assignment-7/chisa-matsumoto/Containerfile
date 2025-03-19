@@ -1,0 +1,4 @@
+FROM python:3.11-alpine
+WORKDIR mydir
+ADD palindrome.py /mydir
+CMD ["python3", "palindrome.py"]
