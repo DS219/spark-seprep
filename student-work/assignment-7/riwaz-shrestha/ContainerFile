@@ -1,0 +1,5 @@
+FROM python
+WORKDIR /riwaz-shrestha
+ADD script.py /riwaz-shrestha/script.py
+RUN chmod +x /riwaz-shrestha/script.py
+CMD ["python","/riwaz-shrestha/script.py"]
