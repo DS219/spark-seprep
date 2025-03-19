@@ -1,0 +1,11 @@
+# Use a minimal Python base image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the hangman.py script
+COPY hangman.py /app/hangman.py
+
+# Run the script
+CMD ["python3", "hangman.py"]
