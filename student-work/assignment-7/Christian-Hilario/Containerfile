@@ -1,0 +1,12 @@
+FROM python:3.9-alpine
+
+WORKDIR Christian-Hilario
+
+ADD script.py /Christian-Hilario/script.py
+
+RUN chmod +x /Christian-Hilario/script.py
+
+RUN apk add curl
+
+CMD ["python", "./script.py"]
+
