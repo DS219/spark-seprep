@@ -1,0 +1,5 @@
+FROM python:3.9
+WORKDIR /mydir
+ADD palindrome.py /mydir
+RUN chmod +x /mydir/palindrome.py
+CMD ["python", "/mydir/palindrome.py"] 
