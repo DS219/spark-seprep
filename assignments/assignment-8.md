@@ -35,6 +35,10 @@ This assignment aims to deepen students' understanding of Exploratory Data Analy
 ### GitHub Workflow for Submission
 1. **Prepare Your Work Environment:**
    ```bash
+   cd <to your github repo path>
+   git checkout main
+   git fetch upstream
+   git rebase upstream/main
    git checkout -b assignment-8-branch
 2. **Navigate and Prepare Your Jupyter Notebook:**
    ```bash
