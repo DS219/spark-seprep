@@ -1,0 +1,5 @@
+FROM python:3.9-alpine
+WORKDIR /app
+COPY ahmedscript.py /app
+RUN chmod +x /app/ahmedscript.py
+CMD ["python3", "/app/ahmedscript.py"]
