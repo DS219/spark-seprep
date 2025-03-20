@@ -1,0 +1,8 @@
+FROM python:3.11-alpine
+
+WORKDIR /mydir
+ADD remove-element.py /mydir
+RUN chmod +x /mydir/remove-element.py
+RUN apk add curl
+CMD ["python", "./remove-element.py"]
+
