@@ -1,0 +1,5 @@
+FROM python:3.11-alpine
+WORKDIR /app
+ADD alanshao.py /app/alanshao.py
+CMD ["python", "alanshao.py"]
+
