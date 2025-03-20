@@ -1,0 +1,6 @@
+FROM python:3.9
+WORKDIR /app
+COPY containsduplicates.py /app/
+RUN chmod +x containsduplicates.py
+CMD ["python", "containsduplicates.py"]
+
