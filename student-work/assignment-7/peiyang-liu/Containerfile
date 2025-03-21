@@ -1,0 +1,11 @@
+FROM python:3.9-slim
+
+WORKDIR /mydir
+
+COPY simple-script.py /mydir/simple-script.py
+
+RUN chmod +x /mydir/simple-script.py
+
+CMD ["python3", "/mydir/simple-script.py"]
+
+
