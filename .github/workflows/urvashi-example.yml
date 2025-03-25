@@ -1,4 +1,4 @@
-name: Python Linting
+name: urvashi tests
 
 on:
   workflow_dispatch:
