@@ -42,7 +42,8 @@ This assignment aims to deepen students' understanding of Exploratory Data Analy
    git checkout -b assignment-8-branch
 2. **Navigate and Prepare Your Jupyter Notebook:**
    ```bash
-   cd student-work/assignment-8/
+   mkdir student-work/assignment-8/FIRSTNAME-LASTNAME
+   cd student-work/assignment-8/FIRSTNAME-LASTNAME
    touch assignment8-<yourname>.ipynb
 3. **Add, Commit, and Push Your Notebook:**
     ```bash
