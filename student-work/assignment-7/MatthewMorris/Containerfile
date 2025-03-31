@@ -1,0 +1,6 @@
+FROM alpine
+WORKDIR /downloads/bu/ds219/spark-seprep/student-work/assignment-7/MatthewMorris .
+Add print_test.py .
+RUN apk add --no-cache python3 curl
+RUN chmod +x print_test.py
+CMD ["python3", "print_test.py"]
