@@ -38,5 +38,5 @@
 
 10. Start a simple chatbot:
     * Open a new terminal
-    * Follow the chatbot [README](../local-chatbot/README.md)
+    * Follow the chatbot [README](local-chatbot/README.md)
     * visit your browser at `localhost:8501`
