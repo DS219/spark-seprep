@@ -12,9 +12,8 @@
    cd ~/Desktop/local-llm-practice
    python3 -m venv venv-local-llm
    source venv-local-llm/bin/activate
-   # you should not be in a virtual env
-   pip3 install huggingface-hub
-   pip3 install huggingface-hub[cli]
+   # you should now be in a virtual env
+   pip3 install huggingface-hub huggingface-hub[cli] uvicorn fastapi
    ```
 7. Download the model:
    ```
