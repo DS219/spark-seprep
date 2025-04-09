@@ -14,9 +14,7 @@
    source venv-local-llm/bin/activate
    # you should not be in a virtual env
    pip3 install huggingface-hub
-   ```
-   ```
-   brew install huggingface-cli
+   pip3 install huggingface-hub[cli]
    ```
 7. Download the model:
    ```
