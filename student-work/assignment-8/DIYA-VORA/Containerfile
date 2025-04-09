@@ -1,0 +1,22 @@
+FROM python:3.9-slim
+WORKDIR /opt/app-root/src
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    g++ \
+    python3-dev \
+    libatlas-base-dev \
+    libffi-dev \
+    meson \
+    pkg-config \
+    libfreetype6-dev \
+    libpng-dev \
+    libjpeg-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y nodejs npm
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+COPY assignment8_DiyaVora.ipynb .
+RUN pip install jupyterlab
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--allow-root"]
+
