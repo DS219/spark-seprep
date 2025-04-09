@@ -1,0 +1,10 @@
+FROM python:latest
+WORKDIR /opt/app-root/src
+COPY requirements.txt .
+COPY assignment8-MinSeok_Cho.ipynb .
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt && \
+    pip install jupyterlab
+EXPOSE 8888
+COPY assignment8-MinSeok_Cho.ipynb .
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
