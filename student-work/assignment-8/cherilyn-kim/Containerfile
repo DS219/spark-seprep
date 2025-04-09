@@ -1,0 +1,18 @@
+FROM python:latest
+
+WORKDIR /opt/app-root/bin
+
+RUN pip install --upgrade pip && \
+    pip install --upgrade jupyterlab
+
+WORKDIR /opt/app-root/src
+
+COPY . /opt/app-root/src/
+
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8888
+
+CMD ["jupyter", "lab", "--port=8888", "--allow-root", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=''"]
+
