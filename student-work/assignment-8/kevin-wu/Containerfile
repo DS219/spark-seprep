@@ -1,0 +1,15 @@
+FROM python:3.9-slim
+
+WORKDIR /opt/app-root/src
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+COPY assignment8-kevin-wu.ipynb .
+COPY AirQualityUCI.xlsx .
+
+CMD ["jupyter", "lab", \
+     "--port=8888", \
+     "--no-browser", \
+     "--ip=0.0.0.0"]
