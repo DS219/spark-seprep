@@ -1,0 +1,7 @@
+FROM python:latest
+WORKDIR /NotebookContainer
+RUN pip install --upgrade jupyterlab
+COPY requirements.txt .
+COPY assignment8-rohitmandapati.ipynb .
+RUN pip install -r requirements.txt
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--allow-root"]
