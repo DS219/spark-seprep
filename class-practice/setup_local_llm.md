@@ -13,7 +13,7 @@
    python3 -m venv venv-local-llm
    source venv-local-llm/bin/activate
    # you should now be in a virtual env
-   pip3 install huggingface-hub huggingface-hub[cli] uvicorn fastapi
+   pip3 install huggingface-hub "huggingface-hub[cli]" uvicorn fastapi
    ```
 7. Download the model:
    ```
