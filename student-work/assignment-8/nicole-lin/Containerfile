@@ -1,0 +1,16 @@
+FROM python:latest
+
+# Set working directory
+WORKDIR /opt/app-root/src
+
+# Copy requirements and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy notebook files
+COPY . .
+
+# Launch JupyterLab
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
+
+
