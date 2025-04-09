@@ -35,3 +35,8 @@
    ```
    python3 -m llama_cpp.server --model ./mistral-7b-instruct-v0.1.Q4_K_M.gguf --host 0.0.0.0 --port 8000 --n_gpu_layers 0
    ```
+
+10. Start a simple chatbot:
+    * Open a new terminal
+    * Follow the chatbot [README](../local-chatbot/README.md)
+    * visit your browser at `localhost:8501`
