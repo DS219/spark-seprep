@@ -1,0 +1,18 @@
+FROM python:latest
+
+# Set working directory
+WORKDIR /opt/app-root/src
+
+# Copy your notebook and requirements
+COPY requirements.txt ./
+COPY assignment8-ChristianHilario.ipynb .
+
+# Install required packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose Jupyter port
+EXPOSE 8888
+
+# Run JupyterLab
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+
