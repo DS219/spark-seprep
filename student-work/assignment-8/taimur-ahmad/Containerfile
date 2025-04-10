@@ -1,0 +1,8 @@
+FROM python:latest
+WORKDIR /opt/app-root/bin
+COPY requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+COPY assignment8-TAIMURAHMAD.ipynb ./assignment8-TAIMURAHMAD.ipynbX
+RUN pip install --upgrade jupyterlab  
+WORKDIR /opt/app-root/src
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]
