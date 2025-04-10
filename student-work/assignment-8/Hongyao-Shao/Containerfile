@@ -1,0 +1,7 @@
+FROM python:latest
+
+RUN pip install --upgrade jupyterlab 
+WORKDIR /opt/app-root
+COPY requirements.txt .
+COPY assignment8-shaohongyao.ipynb .
+CMD ["jupyter", "lab", "--port=8888", "--allow-root"]
