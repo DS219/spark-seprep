@@ -1,0 +1,15 @@
+
+FROM python:latest
+RUN pip install jupyterlab
+WORKDIR /opt/app-root/src
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY assignment8-AhmedAlMehri.ipynb .
+COPY adult.data .
+
+CMD ["jupyter", "lab", "--port=8888","--allow_origin=*", "--ip=", "--no-browser", "--allow-root"]
+
+
