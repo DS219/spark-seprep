@@ -1,0 +1,14 @@
+FROM python:latest
+
+WORKDIR /opt/app-root/bin
+
+RUN pip install --upgrade pip jupyterlab
+
+WORKDIR /opt/app-root/src
+
+COPY requirements.txt .
+COPY Assignment8-MatthewMorris.ipynb .
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8888
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--allow-root"]
