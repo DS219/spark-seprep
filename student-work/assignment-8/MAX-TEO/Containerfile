@@ -1,0 +1,6 @@
+FROM python:3.9-slim
+RUN pip install jupyterlab numpy pandas
+WORKDIR /opt/app-root
+COPY assignment8-Max_Teo.ipynb /opt/app-root/
+EXPOSE 8888
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root"]
