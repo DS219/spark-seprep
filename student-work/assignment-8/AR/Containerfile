@@ -1,0 +1,6 @@
+FROM python:latest
+WORKDIR /opt/app-root/bin
+RUN pip install --upgrade jupyterlab 
+WORKDIR /opt/app-root/src
+COPY assignment8-Azalea_Rohr.ipynb .
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser"]
