@@ -1,0 +1,6 @@
+FROM alpine
+RUN apk add --no-cache python3
+ADD return_5.py /
+RUN chmod +x /return_5.py
+CMD ["python3", "/return_5.py"]
+
