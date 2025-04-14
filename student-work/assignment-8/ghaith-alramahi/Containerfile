@@ -1,0 +1,14 @@
+FROM python:latest
+
+WORKDIR /opt/app-root/bin
+
+RUN pip install --upgrade jupyterlab numpy pandas matplotlib seaborn scipy statsmodels ucimlrepo
+
+WORKDIR /opt/app-root/src
+
+COPY DS219_Assignment8.ipynb .
+
+EXPOSE 8888
+
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
+
