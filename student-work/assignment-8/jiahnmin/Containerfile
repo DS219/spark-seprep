@@ -1,0 +1,8 @@
+FROM python:latest
+
+WORKDIR /opt/app-root/src
+
+RUN pip install --upgrade pip && pip install jupyterlab
+
+CMD ["jupyter", "lab", "--port=8888", "--NotebookApp.allow_origin='*'", "--NotebookApp.token=''", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
+
