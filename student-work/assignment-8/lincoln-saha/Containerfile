@@ -1,0 +1,14 @@
+FROM python:latest
+WORKDIR /opt/app-root/bin
+
+# copy and install dependencies
+RUN pip install jupyterlab pandas matplotlib seaborn scipy
+
+# copy dataset
+COPY WHI_Inflation.csv .
+
+# copy notebook file
+COPY assignment8-lincoln-saha.ipynb .
+
+# configure and launch Jupyter Lab
+CMD ["jupyter", "lab", "--port=8888", "--no-browser", "--allow-root", "--ServerApp.allow_origin='*'", "--ip=0.0.0.0"]
