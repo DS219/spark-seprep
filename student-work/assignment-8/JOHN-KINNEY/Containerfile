@@ -1,0 +1,7 @@
+FROM python:latest
+WORKDIR /opt/app-root/bin
+RUN pip install --upgrade jupyterlab pandas matplotlib seaborn numpy scipy
+WORKDIR /opt/app-root/src
+COPY assignment8-JohnKinney.ipynb .
+EXPOSE 8888
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
