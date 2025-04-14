@@ -1,0 +1,7 @@
+FROM python:latest
+WORKDIR /opt/app-root/bin
+RUN pip install --upgrade jupyterlab pandas numpy matplotlib seaborn scipy
+WORKDIR /opt/app-root/src
+COPY assignment8-sarahrashed.ipynb . 
+CMD ["jupyter", "lab", "--port=8888", "--allow-root", "--ip="]
+
