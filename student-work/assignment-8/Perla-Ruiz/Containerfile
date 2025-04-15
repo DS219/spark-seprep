@@ -1,0 +1,10 @@
+FROM python:latest
+WORKDIR /opt/app-root/bin
+RUN pip install --upgrade jupyterlab
+WORKDIR /opt/app-root/src
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY assignment8-perlaruiz.ipynb .
+
+# CMD should run the jupyter lab server, not in the build phase.
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=''", "--allow-root"]
