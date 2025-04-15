@@ -1,0 +1,8 @@
+FROM python:latest
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY soumyamehta.ipynb .
+
+# Expose the required port and launch Jupyter Lab
+EXPOSE 8888
+CMD ["jupyter", "lab", "--port=8888", "--allow-root", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=''"]
