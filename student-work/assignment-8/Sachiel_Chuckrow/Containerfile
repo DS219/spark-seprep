@@ -1,0 +1,6 @@
+FROM python:latest
+WORKDIR /opt/app-root/bin
+RUN pip install --upgrade jupyterlab 
+WORKDIR /opt/app-root
+COPY Sachiel_Chuckrow.ipynb /opt/app-root/Sachiel_Chuckrow.ipynb
+CMD ["jupyter", "lab", "--port=8888", "--allow_origin=*", "--ip="]
