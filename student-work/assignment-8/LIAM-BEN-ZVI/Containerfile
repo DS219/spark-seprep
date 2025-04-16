@@ -1,0 +1,23 @@
+# Use the latest Python official image as the base
+FROM python:latest
+
+# Set the working directory for installing Jupyter
+WORKDIR /opt/app-root/bin
+
+# Install JupyterLab
+RUN pip install --upgrade jupyterlab
+
+# Set the working directory for the app
+WORKDIR /opt/app-root/src
+
+# Copy the requirements.txt file into the container
+COPY requirements.txt ./requirements.txt
+
+# Install dependencies from requirements.txt
+RUN pip install -r requirements.txt
+
+# Copy the Jupyter Notebook into the container
+COPY assignment8-liambenzvi.ipynb ./assignment8-liambenzvi.ipynb
+
+# Start JupyterLab on port 8888, accessible externally
+CMD ["jupyter", "lab", "--port=8888", "--allow-root", "--ip=0.0.0.0", "--no-browser"]
