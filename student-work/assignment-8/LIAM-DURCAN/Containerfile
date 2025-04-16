@@ -1,0 +1,14 @@
+FROM python:latest
+
+WORKDIR /opt/app-root/src
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir jupyterlab
+
+COPY assignment8-liamdurcan.ipynb .
+
+EXPOSE 8888
+
+# CMD should run the jupyter lab server, not in the build phase.
+CMD ["jupyter", "lab", "--port=8888", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=''", "--allow-root"]
