@@ -1,0 +1,18 @@
+* Yann Arif
+
+My name is yann and my favorite language is C due to the transparency,
+speed and control it offers the user.
+
+** Example Code
+
+#+begin_src <C>
+  int main(int argc, int* argv[]) {
+    char[6] course = "DS219";
+    printf("Hello World\n");
+    printf("This is sample code for %s\n",course);
+  }
+#+end_src
+
+*** Code Explanation
+
+compile this code using ~gcc -o <binname> <srcfile.c>~ and run the binary
