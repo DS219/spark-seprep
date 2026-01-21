@@ -1,0 +1,76 @@
+# Docker Compose - CPU-only version
+# Usage: docker compose -f docker-compose.cpu.yml up
+#
+# This setup includes:
+# - PostgreSQL with pgvector extension
+# - Ramalama model server (CPU)
+# - RAG chatbot Streamlit app (CPU)
+
+version: '3.8'
+
+services:
+  # PostgreSQL with pgvector extension
+  pgvector:
+    image: pgvector/pgvector:pg16
+    container_name: rag-chatbot-pgvector
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-ragdb}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgvector-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Ramalama model server
+  model-server:
+    image: quay.io/ramalama/ramalama:latest
+    container_name: rag-chatbot-model
+    ports:
+      - "${MODELSERVER_PORT:-8888}:${MODELSERVER_PORT:-8888}"
+    volumes:
+      - rag-models:/models
+    command: >
+      ramalama --store /models serve
+      --port ${MODELSERVER_PORT:-8888}
+      --host 0.0.0.0
+      ollama://phi4-mini:latest
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${MODELSERVER_PORT:-8888}/v1/models"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+
+  # RAG Chatbot App (CPU)
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.cpu
+    container_name: rag-chatbot-app
+    environment:
+      MODEL_ENDPOINT: http://model-server:${MODELSERVER_PORT:-8888}
+      MODEL_NAME: ${MODEL_NAME:-phi4-mini-instruct}
+      POSTGRES_HOST: pgvector
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB:-ragdb}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      EMBEDDING_MODEL: BAAI/bge-small-en-v1.5
+      COLLECTION_NAME: documents
+    ports:
+      - "8501:8501"
+    depends_on:
+      pgvector:
+        condition: service_healthy
+      model-server:
+        condition: service_healthy
+
+volumes:
+  pgvector-data:
+  rag-models:

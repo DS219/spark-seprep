@@ -1,0 +1,36 @@
+# CPU-only Dockerfile - Lightweight, no CUDA dependencies
+# Build: docker build -f Dockerfile.cpu -t rag-chatbot:cpu .
+# Run: docker run -p 8501:8501 rag-chatbot:cpu
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements.txt .
+
+# Install PyTorch CPU-only FIRST to avoid CUDA dependencies
+# This is critical - it prevents sentence-transformers from pulling CUDA versions
+RUN pip install --no-cache-dir \
+    torch==2.2.0 \
+    torchvision==0.17.0 \
+    --index-url https://download.pytorch.org/whl/cpu
+
+# Now install other dependencies (sentence-transformers will use CPU PyTorch)
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application files
+COPY rag_app.py .
+COPY manage_vectordb.py .
+
+# Expose Streamlit default port
+EXPOSE 8501
+
+# Run Streamlit app
+CMD ["streamlit", "run", "rag_app.py", "--server.address", "0.0.0.0", "--server.port", "8501"]
