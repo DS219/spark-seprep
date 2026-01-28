@@ -48,7 +48,7 @@ This exercise focuses on basic file and directory management, using a text edito
    vi myscript.sh
    # In vi, add:
    #!/bin/sh
-   curl https://raw.githubusercontent.com/DS219/spark-seprep/refs/heads/main/LICENSE
+   curl https://catfact.ninja/fact
    ```
 
 7. **Execute the Script**:  
