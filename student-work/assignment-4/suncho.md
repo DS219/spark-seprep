@@ -5,7 +5,7 @@ My favorite programming language is Python because there are various machine lea
 
 ## Example Code
 
-"""
+```
 
 def greet_users(names):
 
@@ -16,7 +16,7 @@ users = ["Alice", "Bob", "Charlie"]
 
 greet_users(users)
 
-"""
+```
 
 ### Code Explanation
 
