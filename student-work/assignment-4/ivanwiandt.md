@@ -1,5 +1,5 @@
 # Ivan Wiandt
-My name is Ivan and I like python because of it's collection of easy to use premade libraries
+My name is Ivan and I like python because of its collection of easy to use premade libraries
 ### Example Code
 ``` # Open the file in read mode
 text = open("4.txt", "r")
