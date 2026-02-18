@@ -61,7 +61,7 @@ git branch
    - Navigate to: `spark-seprep/student-work/assignment-5`
    - Create a new directory here with your name using `mkdir <firstname-lastname>`
    - Enter this directory for the assignment `cd <firstname-lastname>`
-   - You can view the example [here](https://github.com/DS219/spark-seprep/tree/main/student-work/assignment-5/sample-example).
+   - You can view the example [here](https://github.com/DS219/spark-seprep/blob/main/student-work/assignment-5/two_sum.py).
 
 3. **Add the code file to your directory:**
    
