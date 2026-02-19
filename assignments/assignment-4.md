@@ -62,6 +62,12 @@ submitting pull requests, and establishing an upstream repository.
    git push origin assignment-4
    ```
 
+If you messed up and need to add/update the changes you have already pushed, DO NOT create a new commit, just ammend to your existing commit with the commands below
+```bash
+git add yourname.md
+git commit --amend
+```
+
 **5. Final PR to Main Upstream:**
 
    - Submit a pull request to the main upstream repository (`DS219/spark-seprep`) containing the changes to `student-work/assignment-4/yourname.md`.
