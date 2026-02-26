@@ -1,0 +1,1 @@
+# Ayra GulatiHi, my name is Ayra Gulati and my favorite programing language is python  because I love how similar the wording is to english!## Example codeif x < 0:print('negative')if x > 0:print('positive')### Code explanationIf a number is positive it will print positive. If a number is negative it will print negative.
