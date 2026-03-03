@@ -1,0 +1,12 @@
+# Choose a base image that makes sense for your script
+# If you have a python script, this will be a good base image to start from
+# FROM python:3.11-slim
+FROM alpine
+# NOTE: This file must be in the same directory as your Dockerfile/Containerfile
+COPY joke.sh .
+# Add the executable permission to your script
+RUN chmod +x joke.sh
+# Install any packages your script needs to run
+RUN apk add curl
+# Set the default command to run 
+CMD ./joke.sh
