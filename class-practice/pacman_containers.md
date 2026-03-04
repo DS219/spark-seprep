@@ -1,7 +1,7 @@
 ## Clone PacMan repository
 
 ```
-cd /your/git/repos
+cd ~/Desktop/github
 git clone git@github.com:sallyom/mongo-pacman.git
 cd mongo-pacman
 ```
