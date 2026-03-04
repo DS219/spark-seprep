@@ -18,19 +18,11 @@ podman build -t pacman:latest -f docker/Dockerfile .
 cd ../
 ```
 
-### Note: For people on windows, create another Containerfile with the following lines and build it
+### Note: For people on windows, build Dockerfile.windows instead
 ```bash
-vi windows-containerfile
-```
-Add these lines to the windows-containerfile
-```
-FROM pacman:latest
-RUN dnf -y install dos2unix
-RUN dos2unix /usr/local/bin/pacman.sh && chmod +x /usr/local/bin/pacman.sh
-```
-Then run the following command to build your image
-```
-podman build -t pacman:latest -f windows-containerfile .
+cd frontend
+podman build -t pacman:latest -f docker/Dockerfile.windows .
+cd ../
 ```
 
 ## Run the built image
