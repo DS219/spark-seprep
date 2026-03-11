@@ -1,0 +1,3 @@
+FROM python:3.11-alpine
+COPY reverse_string.py .
+CMD python reverse_string.py
