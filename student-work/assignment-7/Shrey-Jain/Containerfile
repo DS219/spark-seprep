@@ -1,0 +1,3 @@
+FROM python:3.12-alpine
+COPY stock_summary.py .
+CMD python3 stock_summary.py
