@@ -1,0 +1,6 @@
+FROM python:3.12-alpine
+
+WORKDIR /app
+COPY hello.py /app/hello.py
+
+CMD ["python3", "/app/hello.py"]
