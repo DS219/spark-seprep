@@ -1,0 +1,4 @@
+FROM python:3.11-alpine
+WORKDIR /app
+COPY last_word_length.py .
+CMD ["python3", "last_word_length.py"]
