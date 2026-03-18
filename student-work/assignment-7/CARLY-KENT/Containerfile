@@ -1,0 +1,5 @@
+FROM alpine:latest
+WORKDIR /app
+COPY myscript.sh .
+RUN chmod +x myscript.sh
+CMD ["./myscript.sh"]
