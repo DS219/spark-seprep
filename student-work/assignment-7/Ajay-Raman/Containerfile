@@ -1,0 +1,7 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY random_number.py /app/random_number.py
+RUN chmod +x /app/random_number.py
+
+CMD /app/random_number.py
