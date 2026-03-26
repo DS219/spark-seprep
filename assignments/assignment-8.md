@@ -27,7 +27,7 @@ the AI application. If you ran into issues, tell us about them! How did you fix 
 
 The presentation should be 1.5 minutes or less. Use an editor to include only the parts worth showing! We don't want to 
 wait for your model or image to download on your video. Provide a link for your video in the form provided. 
-**Form will be added to this page within the next few days**
+[Form to submit assignment](https://forms.gle/6JgCPFyNJo5uJ7bv8)
 
 In previous semesters, the `Audio to Text` application was a popular choice.
 All the best and have fun! Extra credit for those that try out some interesting applications!
