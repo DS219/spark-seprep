@@ -1,0 +1,7 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+COPY two_sum.py .
+
+CMD ["python", "two_sum.py"]
