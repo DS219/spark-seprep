@@ -1,0 +1,4 @@
+FROM python:3.9-slim
+COPY palindrome_number.py .
+RUN chmod +x palindrome_number.py
+CMD ["python", "palindrome_number.py"]
