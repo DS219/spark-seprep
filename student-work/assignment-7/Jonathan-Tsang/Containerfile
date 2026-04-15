@@ -1,0 +1,4 @@
+FROM python:3.12-alpine
+COPY swim_splits.py .
+RUN chmod +x swim_splits.py
+CMD ["python3", "swim_splits.py"]
