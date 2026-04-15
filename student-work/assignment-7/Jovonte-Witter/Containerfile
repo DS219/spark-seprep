@@ -1,0 +1,8 @@
+FROM python:3.12-alpine
+
+WORKDIR /app
+COPY hello.py .
+RUN chmod +x hello.py
+
+CMD ["./hello.py"]
+

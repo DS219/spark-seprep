@@ -1,0 +1,4 @@
+FROM python:3.12-slim
+COPY countdown.py .
+RUN chmod +x countdown.py
+CMD ["python3", "countdown.py"]

@@ -1,0 +1,9 @@
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+COPY Assignment7.java .
+
+RUN javac Assignment7.java
+
+CMD ["java", "Assignment7"]
