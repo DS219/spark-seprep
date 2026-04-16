@@ -42,6 +42,12 @@ On Mac, Ollama usually starts automatically. If not, open a **separate terminal*
 ollama serve
 ```
 
+If this doesn't work change the `OLLAMA_HOST`:
+
+```bash
+export OLLAMA_HOST=127.0.0.1:11435
+```
+
 Leave that terminal open. You'll use a different terminal for the rest of the assignment.
 
 ### Test It
