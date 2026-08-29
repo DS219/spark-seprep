@@ -1,0 +1,44 @@
+# NVIDIA GPU Dockerfile - For host GPU passthrough (no CUDA toolkit in container)
+# Build: docker build -f Dockerfile.nvidia -t rag-chatbot:nvidia .
+# Run: docker run --gpus all -p 8501:8501 rag-chatbot:nvidia
+#
+# Requirements:
+# - NVIDIA Container Runtime installed on host
+# - NVIDIA drivers installed on host
+# - Docker configured to use nvidia runtime
+#
+# The container will use the host's GPU drivers and CUDA libraries,
+# so we don't need to install the full CUDA toolkit here.
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements.txt .
+
+# Install PyTorch with CUDA support (but without full CUDA toolkit)
+# The CUDA libraries will come from the host via NVIDIA Container Runtime
+RUN pip install --no-cache-dir \
+    torch==2.2.0 \
+    torchvision==0.17.0 \
+    --index-url https://download.pytorch.org/whl/cu121
+
+# Now install other dependencies (sentence-transformers will use CUDA PyTorch)
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application files
+COPY rag_app.py .
+COPY manage_vectordb.py .
+
+# Expose Streamlit default port
+EXPOSE 8501
+
+# Run Streamlit app
+CMD ["streamlit", "run", "rag_app.py", "--server.address", "0.0.0.0", "--server.port", "8501"]
