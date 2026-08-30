@@ -34,6 +34,7 @@ GitHub Pages is the primary classroom and student-facing host:
 - Lesson 1 presenter mode: <https://ds219.github.io/spark-seprep/lesson-1/presenter/>
 
 Pushing lesson changes to `main` automatically rebuilds the site through `.github/workflows/pages.yml`.
+The workflow also creates a static presenter entry point because GitHub Pages does not provide the development server's single-page-app fallback.
 
 GitHub Pages still requires internet access. Before class, export the PDF and keep it on the presentation laptop as the offline fallback.
 

@@ -39,6 +39,11 @@ jobs:
         working-directory: lessons/lesson-1
         run: npm run build -- --base /spark-seprep/lesson-1/ --out ../../site/lesson-1
 
+      - name: Add Lesson 1 presenter entry point
+        run: |
+          mkdir -p site/lesson-1/presenter
+          cp site/lesson-1/index.html site/lesson-1/presenter/index.html
+
       - name: Add course index
         run: cp lessons/index.html site/index.html
 
