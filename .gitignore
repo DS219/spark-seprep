@@ -203,6 +203,10 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# Node-based lesson tooling and generated presentation exports
+node_modules/
+lessons/**/lesson-*.pdf
+
 # Ruff stuff:
 .ruff_cache/
 

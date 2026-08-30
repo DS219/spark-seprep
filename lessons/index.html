@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DS 219 course lessons and presentation links" />
+    <title>DS 219 Course Lessons</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 85% 10%, rgb(204 0 0 / 30%), transparent 30%),
+          linear-gradient(145deg, #111827 0%, #080b12 72%);
+        color: #f8fafc;
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 72rem;
+        padding: 5rem 2rem;
+      }
+
+      .eyebrow {
+        color: #ff3b3b;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 7vw, 5.4rem);
+        letter-spacing: -0.045em;
+        line-height: 0.98;
+        margin: 0.75rem 0 1rem;
+      }
+
+      .intro {
+        color: #a8b3c7;
+        font-size: 1.35rem;
+        line-height: 1.5;
+        max-width: 45rem;
+      }
+
+      .lesson {
+        background: rgb(255 255 255 / 8%);
+        border: 1px solid rgb(255 255 255 / 18%);
+        border-radius: 1rem;
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr auto;
+        margin-top: 3rem;
+        padding: 1.5rem;
+      }
+
+      .lesson h2 {
+        font-size: 1.7rem;
+        margin: 0 0 0.45rem;
+      }
+
+      .lesson p {
+        color: #a8b3c7;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .actions {
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        justify-content: center;
+      }
+
+      a {
+        border: 1px solid rgb(255 92 92 / 55%);
+        border-radius: 999px;
+        color: white;
+        font-weight: 750;
+        padding: 0.7rem 1rem;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      a.primary {
+        background: rgb(204 0 0 / 55%);
+      }
+
+      a:hover,
+      a:focus-visible {
+        background: #cc0000;
+        outline: none;
+      }
+
+      @media (max-width: 42rem) {
+        main {
+          padding: 3rem 1.2rem;
+        }
+
+        .lesson {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">Boston University · Fall 2026</div>
+      <h1>DS 219<br />Course Lessons</h1>
+      <p class="intro">Software Engineering Career Prep Practicum. Open a lesson to view the student-facing slides or launch presenter mode with speaker notes.</p>
+
+      <section class="lesson">
+        <div>
+          <h2>Lesson 1: Welcome and Open Source</h2>
+          <p>Course expectations, open-source licenses, governance, foundations, and how projects become industry ecosystems.</p>
+        </div>
+        <div class="actions">
+          <a class="primary" href="./lesson-1/">Open slides</a>
+          <a href="./lesson-1/presenter/">Presenter mode</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

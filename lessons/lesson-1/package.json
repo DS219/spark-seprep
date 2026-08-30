@@ -1,0 +1,14 @@
+{
+  "name": "ds219-lesson-1",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --output lesson-1.pdf"
+  },
+  "devDependencies": {
+    "@slidev/cli": "52.19.1",
+    "@slidev/theme-default": "0.25.0",
+    "playwright-chromium": "1.62.1"
+  }
+}

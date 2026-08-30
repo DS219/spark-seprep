@@ -1,0 +1,64 @@
+name: Deploy course site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/pages.yml"
+      - "lessons/**"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: lessons/lesson-1/package-lock.json
+
+      - name: Install Lesson 1 dependencies
+        working-directory: lessons/lesson-1
+        run: npm ci
+
+      - name: Build Lesson 1
+        working-directory: lessons/lesson-1
+        run: npm run build -- --base /spark-seprep/lesson-1/ --out ../../site/lesson-1
+
+      - name: Add course index
+        run: cp lessons/index.html site/index.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+        with:
+          enablement: true
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
