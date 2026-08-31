@@ -74,5 +74,4 @@ Generated files are intentionally excluded by the repository's existing `dist/` 
 
 - `slides.md`: student-facing slides and speaker notes
 - `style.css`: local presentation theme
-- `assignment.md`: Blackboard-ready Week 1 assignment copy
 - `sources.md`: authoritative sources and refresh guidance

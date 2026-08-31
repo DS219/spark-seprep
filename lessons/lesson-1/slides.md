@@ -575,34 +575,17 @@ Preview that each student already has a separate VM login. Tell students what, i
 
 <div class="eyebrow">Week 1 assignment</div>
 
-# Two short parts to help shape the course
+# Introduce yourself
 
-<div class="grid two">
-  <div class="card"><h2>1 · Introduce yourself</h2><p>Your experience, learning goals, primary operating system, and what you want to explore</p></div>
-  <div class="card red"><h2>2 · Follow the stack</h2><p>Choose one open-source project and trace how an industry ecosystem has formed around it</p></div>
+<div class="grid two" style="margin-top: 1.5rem">
+  <div class="card red"><h2>Google Form</h2><p>Tell me about your experience, interests, learning goals, and what you want to explore.</p></div>
+  <div class="card"><h2>25 points</h2><p>Open and submit the assignment through Blackboard.</p></div>
 </div>
 
-<p class="lede" style="margin-top: 1.3rem">Submit both parts in Blackboard. Evidence and thoughtful effort matter more than polish.</p>
+<p class="lede" style="margin-top: 1.3rem">This helps me shape the course around the class. There are no trick questions.</p>
 
 <!--
-Open the Blackboard assignment live if useful. State the due date exactly as published there. The introduction form remains low stakes; the project investigation replaces the older CNCF-only prompt.
--->
-
----
-
-<div class="eyebrow">Follow the stack</div>
-
-# Show how open source becomes an industry
-
-<div class="grid two">
-  <div class="card red"><h2>Choose + inspect</h2><p>Find the official repository, license, governance home, and one current activity signal.</p></div>
-  <div class="card"><h2>Trace outward</h2><p>Find two concrete products, services, integrations, standards, or job categories built around it.</p></div>
-</div>
-
-<p class="question">Make one evidence-backed claim. Include the links that support it.</p>
-
-<!--
-Examples can come from the infrastructure layer, such as Kubernetes or OpenTelemetry; the AI layer, such as PyTorch or vLLM; or the application and agent layer. Students should not claim that stars or a recent commit alone prove industry impact. The Blackboard prompt in assignment.md has the full deliverable and completion rubric.
+Open the Blackboard assignment live if useful. State the due date exactly as published there, then show students that Blackboard links to the Google Form.
 -->
 
 ---
