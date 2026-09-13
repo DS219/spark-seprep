@@ -32,6 +32,7 @@ jobs:
           cache-dependency-path: |
             lessons/lesson-1/package-lock.json
             lessons/lesson-2/package-lock.json
+            lessons/lesson-3/package-lock.json
 
       - name: Install Lesson 1 dependencies
         working-directory: lessons/lesson-1
@@ -58,6 +59,19 @@ jobs:
         run: |
           mkdir -p site/lesson-2/presenter
           cp site/lesson-2/index.html site/lesson-2/presenter/index.html
+
+      - name: Install Lesson 3 dependencies
+        working-directory: lessons/lesson-3
+        run: npm ci
+
+      - name: Build Lesson 3
+        working-directory: lessons/lesson-3
+        run: npm run build -- --base /spark-seprep/lesson-3/ --out ../../site/lesson-3
+
+      - name: Add Lesson 3 presenter entry point
+        run: |
+          mkdir -p site/lesson-3/presenter
+          cp site/lesson-3/index.html site/lesson-3/presenter/index.html
 
       - name: Add course index
         run: cp lessons/index.html site/index.html

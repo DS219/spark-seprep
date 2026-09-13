@@ -14,7 +14,7 @@ exportFilename: ds219-lesson-2
 lineNumbers: true
 ---
 
-<div class="eyebrow">Boston University · Fall 2026</div>
+<div class="eyebrow">Fall 2026</div>
 
 # Your First Remote<br><span class="accent">Linux Session</span>
 
@@ -454,7 +454,7 @@ The client initiates a connection to the server, normally on TCP port 22. Avoid 
 </div>
 
 <div class="grid two" style="margin-top: 1.2rem">
-  <div class="card"><h2><code>YOUR_USERNAME</code></h2><p>Your BU email name without <code>@bu.edu</code>.</p></div>
+  <div class="card"><h2><code>YOUR_USERNAME</code></h2><p>Your course-account username, without its email domain.</p></div>
   <div class="card red"><h2><code>VM_ADDRESS</code></h2><p>The class VM address provided in Blackboard.</p></div>
 </div>
 

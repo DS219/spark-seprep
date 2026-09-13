@@ -14,7 +14,7 @@ exportFilename: ds219-lesson-1
 lineNumbers: true
 ---
 
-<div class="eyebrow">Boston University · Fall 2026</div>
+<div class="eyebrow">Fall 2026</div>
 
 # Software Engineering<br><span class="accent">Career Prep Practicum</span>
 
