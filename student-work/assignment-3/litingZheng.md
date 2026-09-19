@@ -1,4 +1,6 @@
-## Example code
+# Liting Zheng
+
+Hi, my name is Liting and my favorite programing language is Python because I enjoy the convience with a lot of library
 
 ## Example code
 
