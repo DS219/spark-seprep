@@ -8,20 +8,9 @@ cd mongo-pacman
 
 ## Build PacMan
 
-Use the commands and submit the form listed below.
-If you forget to add the `--it` flags to the run command, it will be tricky to stop the container.
-If this happens, open another terminal and run `podman stop --all`
-
 ```bash
 cd frontend
 podman build -t pacman:latest -f docker/Dockerfile .
-cd ../
-```
-
-### Note: For people on windows, build Dockerfile.windows instead
-```bash
-cd frontend
-podman build -t pacman:latest -f docker/Dockerfile.windows .
 cd ../
 ```
 
@@ -55,7 +44,6 @@ Listening on port 8080
 To play `PACMAN`, head to your browser at `http://localhost:8080`
 
 * `EXTRA CREDIT`: Make a change (any change!) that is visible when the program is run. Build and push that image.
-* `EXTRA EXTRA CREDIT`: Configure the mongo database to keep records of games played with best scores. Explain how you did it.
 
 You can use Podman, Docker, or any other container build tool.
 
@@ -70,9 +58,8 @@ podman push pacman:latest docker.io/<YOURUSERNAME>/pacman:latest
 **To clean up your system after running and building the pacman image (after you're done with the assignment):**
 
 ```bash
-podman stop --all
-podman system prune --all
-# you'll be asked to confirm by typing 'y'
+podman stop pacman
+podman rmi localhost/pacman:latest
 ```
 
 ![pacman screen shot](./screenshot.png)
