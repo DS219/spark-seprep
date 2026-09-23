@@ -1,4 +1,4 @@
-#RickyCui
+# RickyCui
 Hi my favorite programing languaage is Rust because of how fast and versitile it is. 
 
 ## Example code
