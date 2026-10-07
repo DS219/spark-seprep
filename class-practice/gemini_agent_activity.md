@@ -239,3 +239,40 @@ risky runs.
   it choose correctly.
 - Preview for next week: OpenCode gives a model dozens of tools like this
   automatically, and adds the approval step before anything risky runs.
+
+## Cleanup
+
+Everything you installed tonight lives inside the `venv` folder, not
+anywhere system-wide, so cleaning up is low-stakes.
+
+```bash
+deactivate
+```
+
+Run that when you're done to leave the virtual environment. Your terminal
+prompt loses the `(venv)` prefix, and `python3` / `pip` go back to whatever
+they pointed to before. You don't need to do this between stages, only when
+you're finished for the night.
+
+Want to come back to this later, tomorrow, next week, after closing the
+terminal? The venv is still there, it just needs re-activating:
+
+```bash
+cd ~/Desktop/gemini-agent-activity
+source ./venv/bin/activate
+```
+
+You'll see `(venv)` reappear in your prompt, and your scripts will run
+again without reinstalling anything. You will need to `export
+GEMINI_API_KEY=...` again though, that part doesn't persist.
+
+To remove the whole activity, including the venv and your three scripts,
+just delete the folder:
+
+```bash
+rm -rf ~/Desktop/gemini-agent-activity
+```
+
+Nothing outside that folder was touched. Your `GEMINI_API_KEY` variable
+disappears on its own when you close the terminal, it was never written to
+a file.
