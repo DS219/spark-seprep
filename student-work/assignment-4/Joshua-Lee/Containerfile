@@ -1,0 +1,8 @@
+
+FROM python:3.12-alpine
+
+COPY matrix.py .
+
+RUN chmod +x matrix.py
+
+CMD ["./matrix.py"]
