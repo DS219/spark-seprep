@@ -1,0 +1,4 @@
+FROM python:3-alpine
+ENV TERM=xterm-256color PYTHONUNBUFFERED=1
+COPY pacman.py .
+CMD ["python", "pacman.py"]
