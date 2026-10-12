@@ -1,0 +1,4 @@
+FROM python:3.12-alpine
+WORKDIR /app
+COPY dna_tool.py .
+CMD ["python3", "dna_tool.py"]
