@@ -1,0 +1,7 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY date.py .
+RUN chmod +x date.py
+
+CMD ./date.py
