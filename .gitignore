@@ -223,3 +223,7 @@ __marimo__/
 
 # VM maintenance
 /scripts/userlist.txt
+
+# macOS Finder metadata
+.DS_Store
+.DS_STORE
