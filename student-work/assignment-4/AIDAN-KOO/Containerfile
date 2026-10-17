@@ -1,0 +1,8 @@
+# Python base image, since this is a Python script
+FROM python:3.11-slim
+
+# Copy the script into the image
+COPY dice_stats.py .
+
+# Run the script when the container starts
+CMD ["python", "dice_stats.py"]
