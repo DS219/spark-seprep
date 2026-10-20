@@ -73,7 +73,7 @@ The instructor should be able to reproduce your result using those instructions.
 | Local serving and reproducibility | 15 | README commands work; screenshot shows local HTTP URL and rendered site |
 | Content and working interaction | 10 | Original content meets the requirements; interaction works |
 | Layout and usability | 5 | Narrow/wide layouts, readable text, keyboard controls and visible focus |
-| Agent use and verification | 15 | Constraints and reflection describe a tool action and verified improvement |
+| Agent use and verification | 15 | Summarize the agent conversation or share prompts in Blackboard submission  |
 | Git repository quality | 5 | Accessible source, descriptive commits, needed assets/dependencies, no junk or secrets |
 | **Total** | **50** | |
 
