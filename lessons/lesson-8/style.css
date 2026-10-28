@@ -1,0 +1,16 @@
+@import "../lesson-3/style.css";
+
+/* The activity checkpoints should remain legible from the back of the room. */
+.slidev-layout table {
+  font-size: 1.12rem;
+  line-height: 1.45;
+}
+
+.slidev-layout p,
+.slidev-layout li {
+  font-size: 1.3rem;
+}
+
+.slidev-layout pre code {
+  font-size: 1.05rem;
+}
