@@ -35,6 +35,7 @@ jobs:
             lessons/lesson-3/package-lock.json
             lessons/lesson-6/package-lock.json
             lessons/lesson-7/package-lock.json
+            lessons/lesson-8/package-lock.json
 
       - name: Install Lesson 1 dependencies
         working-directory: lessons/lesson-1
@@ -100,6 +101,19 @@ jobs:
         run: |
           mkdir -p site/lesson-7/presenter
           cp site/lesson-7/index.html site/lesson-7/presenter/index.html
+
+      - name: Install Lesson 8 dependencies
+        working-directory: lessons/lesson-8
+        run: npm ci
+
+      - name: Build Lesson 8
+        working-directory: lessons/lesson-8
+        run: npm run build -- --base /spark-seprep/lesson-8/ --out ../../site/lesson-8
+
+      - name: Add Lesson 8 presenter entry point
+        run: |
+          mkdir -p site/lesson-8/presenter
+          cp site/lesson-8/index.html site/lesson-8/presenter/index.html
 
       - name: Add course index
         run: cp lessons/index.html site/index.html
