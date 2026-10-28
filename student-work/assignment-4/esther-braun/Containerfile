@@ -1,0 +1,4 @@
+FROM python:3.12-alpine
+COPY coffee_stats.py .
+RUN chmod +x coffee_stats.py
+CMD ./coffee_stats.py
