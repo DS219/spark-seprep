@@ -16,19 +16,6 @@ Your prompts never leave your laptop.
 | Windows | Windows 10 or 11, PowerShell. |
 | Memory | 8 GB RAM or more. 16 GB is comfortable. |
 | Disk | About 5 GB free. |
-| Podman | Only for step 6. You installed it earlier in the course. |
-
-## Checkpoints
-
-| Minutes | Work | Evidence you can show |
-| --- | --- | --- |
-| Before class | Install llmman and download the model | `llmman ls` lists `gemma3:4b` |
-| 0–10 | Chat in the terminal, inspect the model | A reply, and the model's parameter count |
-| 10–20 | Chat in the browser | A reply at `http://127.0.0.1:17434` |
-| 20–30 | Call the API with `curl` and Python | JSON from `curl`, an answer from `ask.py` |
-| 30–40 | Run a chat app in a container | A persona you created in NextChat |
-| 40–45 | Find the model's limits | One confidently wrong answer |
-| 45–50 | Remove everything | The cleanup checks print nothing |
 
 ## 0. Before class: install and download (about 10 minutes)
 
