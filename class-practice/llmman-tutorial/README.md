@@ -212,42 +212,7 @@ llmman run hf.co/unsloth/Phi-4-mini-instruct-GGUF "In one sentence, what is a lo
 This name points **directly at a Hugging Face repository**. Ask both models
 the same question and compare the answers.
 
-## 6. Run a chat app in a container (30–40 minutes)
-
-Any app that speaks the OpenAI API can use your local model.
-[NextChat](https://github.com/ChatGPTNextWeb/NextChat) is an open-source
-ChatGPT-style app. Run it with Podman and point it at llmman:
-
-```bash
-podman machine start   # Mac and Windows; "already running" is fine
-podman run -d --name nextchat -p 127.0.0.1:3000:3000 \
-  -e BASE_URL=http://host.containers.internal:17434 \
-  -e OPENAI_API_KEY=sk-local \
-  -e CUSTOM_MODELS=-all,+gemma3:4b \
-  -e DEFAULT_MODEL=gemma3:4b \
-  docker.io/yidadaa/chatgpt-next-web:latest
-```
-
-On Windows PowerShell, put the command on one line without the `\` characters.
-
-- `host.containers.internal` is how a container reaches your laptop.
-- `OPENAI_API_KEY=sk-local` is a placeholder. llmman does not check it.
-- `CUSTOM_MODELS` hides the hosted models NextChat would otherwise list.
-
-Open [http://127.0.0.1:3000](http://127.0.0.1:3000). Send a message.
-
-**Make it yours:** NextChat calls personas **Masks**. Click **Mask** in the
-left sidebar, then **Create** at the top right. In the new mask, set the model
-to `gemma3:4b` and write a system prompt, for example a study buddy who
-quizzes you on the command line, or a tour guide for your hometown. Chat with it.
-
-The built-in templates in that list are mostly in Chinese and are set to
-`gpt-3.5-turbo`, a hosted model you are not running. Create your own instead.
-This is the same system message you edited in `ask.py`, with a nicer interface.
-
-**Checkpoint:** a conversation with a persona you created.
-
-## 7. Find the model's limits (40–45 minutes)
+## 6. Find the model's limits (40–45 minutes)
 
 A 4-billion-parameter model is small. Try to catch it being confidently wrong:
 
@@ -265,21 +230,18 @@ said a "local LLM" is a model trained on a regional dialect. That is a
 
 Write down one wrong answer and why you think the model got it wrong.
 
-## 8. Remove everything (45–50 minutes)
+## 7. Remove everything (45–50 minutes)
 
 Do this even if you plan to use llmman again. You can reinstall in a minute.
 
 ### Mac
 
 ```bash
-# 1. The chat app container and its image
-podman rm -f nextchat
-podman rmi docker.io/yidadaa/chatgpt-next-web:latest
 
-# 2. Stop the model server (this also stops the model it loaded)
+# 1. Stop the model server (this also stops the model it loaded)
 pkill -f "llmman serve"
 
-# 3. The program, the models, and everything llmman downloaded
+# 2. The program, the models, and everything llmman downloaded
 rm ~/.local/bin/llmman
 rm -rf ~/.local/share/llmman ~/.config/llmman
 ```
@@ -298,14 +260,11 @@ podman ps -a --filter name=nextchat --format '{{.Names}}'
 ### Windows (PowerShell)
 
 ```powershell
-# 1. The chat app container and its image
-podman rm -f nextchat
-podman rmi docker.io/yidadaa/chatgpt-next-web:latest
 
-# 2. Stop the model server and the model it loaded
+# 1. Stop the model server and the model it loaded
 Stop-Process -Name llmman, llama-server -ErrorAction SilentlyContinue
 
-# 3. The program, the models, and everything llmman downloaded
+# 2. The program, the models, and everything llmman downloaded
 Remove-Item "$env:LOCALAPPDATA\Microsoft\WindowsApps\llmman.exe*"
 Remove-Item -Recurse -Force "$env:LOCALAPPDATA\llmman", "$env:APPDATA\llmman" -ErrorAction SilentlyContinue
 ```
@@ -342,7 +301,5 @@ It stays on your laptop and is deleted in step 8. To turn it off, set
 | Download is very slow | Classroom Wi-Fi is shared. Pair with someone who downloaded at home. |
 | First reply takes a long time | The model is loading into memory. Later replies are faster. |
 | Browser page at port 17434 does not load | Run `llmman run gemma3:4b "hi"` first. That starts the server. |
-| NextChat shows an error when you send | Check that `llmman ps` or step 3 works. Check the spelling of `host.containers.internal`. |
-| `podman: command not found` or machine errors | Skip step 6, or pair with a classmate. Everything else works without Podman. |
-| Laptop gets slow or hot | That is the model using your GPU. Close other apps. Stop the server with step 8, part 2. |
+| Laptop gets slow or hot | That is the model using your GPU. Close other apps. Stop the server with step 7, part 2. |
 | Out of disk space | Skip step 5. Run `llmman rm <name>` to delete a model. |
