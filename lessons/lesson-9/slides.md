@@ -85,10 +85,26 @@ Start date July 2027: this is a role current students could apply for. Read the 
 | "Support the full AI development lifecycle, from solution design to deployment and monitoring" | Plan, build, ship |
 | "Strong problem-solving, documentation, and communication skills" | README and pitch |
 
-<p class="question">What's the same in both postings?</p>
+<!--
+Senior contract role ($68/hour), included to show the same skills appear above entry level.
+-->
+
+---
+
+# [Product Manager Intern](https://redhat.wd5.myworkdayjobs.com/en-US/jobs/details/Product-Manager-Intern_R-059060) · Red Hat
+
+Raleigh and Boston · internship
+
+| The posting says | In this project |
+| --- | --- |
+| "Collect and document input from technology users, customers, and other stakeholders" | Your partner's issue; outside users in week 2 |
+| "Develop and prioritize and document requirements, epics, and user stories" | `SPEC.md` and your GitHub issues |
+| "Collaborate with engineering teams… to solve business problems" | Directing the agent |
+
+<p class="question">What's the same in all three postings?</p>
 
 <!--
-Senior contract role ($68/hour), included to show the same skills appear above entry level. Expected answers: AI tools, design before building, documentation, communication. Nobody is asking for "can type code fast."
+Not every tech job is writing code. This internship is almost exactly today's class: talk to users, write requirements, prioritize, work with engineers. Expected answers to the question: planning and design, communication, documentation, working with others and with AI. Nobody is asking for "can type code fast." Postings expire; replace before reusing this deck.
 -->
 
 ---
