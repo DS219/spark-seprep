@@ -14,9 +14,61 @@ Your study guide never leaves your laptop.
 | | Requirement |
 | --- | --- |
 | llmman | Installed, with `gemma3:4b` downloaded. If you deleted it at the end of the llmman tutorial, redo [step 0](../llmman-tutorial/README.md#0-before-class-install-and-download-about-10-minutes) **before class**. |
-| Node.js | Version 20.6 or newer. Check with `node --version`. Install from [nodejs.org](https://nodejs.org/) (choose the LTS version) if needed. |
-| git | Check with `git --version`. |
+| Podman | Installed, with a Podman machine running. See step 0. |
 | Memory | Same as the llmman tutorial: 8 GB RAM or more. |
+| Disk | About 1 GB free for the app's container image. |
+
+You do **not** need Node.js or git. The app comes ready to run as a container image.
+
+## 0. Before class: install Podman (about 15 minutes)
+
+Skip this step if `podman machine list` already shows a machine.
+
+On a Mac or Windows laptop, containers run inside a small Linux virtual machine
+called a **Podman machine**. You install Podman, then create and start that machine once.
+
+### Mac (Apple Silicon)
+
+1. Download the Podman installer (`.pkg`) for macOS from the
+   [Podman installation page](https://podman.io/docs/installation) and run it.
+   If you use Homebrew, `brew install podman` also works.
+2. Close and reopen **Terminal**, then check:
+
+   ```bash
+   podman --version
+   ```
+
+### Windows
+
+Podman on Windows runs on **WSL 2**, Microsoft's built-in Linux support.
+
+1. If you have never used WSL, open **PowerShell as Administrator** and run
+   `wsl --install`. Restart your computer when it asks.
+2. Download the Podman installer for Windows from the
+   [Podman installation page](https://podman.io/docs/installation) and run it.
+3. Close and reopen **PowerShell**, then check:
+
+   ```powershell
+   podman --version
+   ```
+
+### Create and start the Podman machine (Mac and Windows)
+
+```bash
+podman machine init
+podman machine start
+```
+
+`podman machine init` downloads the Linux virtual machine, so it takes a few minutes
+the first time. Then check that containers run:
+
+```bash
+podman run --rm quay.io/podman/hello
+```
+
+You should see a seal (the Podman mascot) and a hello message.
+
+**Checkpoint:** the hello container printed its message.
 
 ## 1. Start the model server (0–5 minutes)
 
@@ -45,74 +97,113 @@ You should see `gemma3:4b` in the reply.
 In the second terminal:
 
 ```bash
-git clone https://github.com/petecheslock/ai-study-guide
-cd ai-study-guide
-npm install
+podman pull ghcr.io/petecheslock/ai-study-guide:latest
 ```
 
-`npm install` downloads the libraries the app needs into a `node_modules`
-folder inside `ai-study-guide`. Nothing is installed anywhere else.
+This downloads Pete's app as a **container image** from the GitHub Container
+Registry (`ghcr.io`). The image already contains Node.js, the app's libraries,
+and its code. Nothing is installed on your laptop outside Podman.
 
-Look around before you run it:
+You can read the app's code on GitHub while it downloads:
 
 | Path | What it is |
 | --- | --- |
-| `server/llm.js` | The code that talks to the model server. |
-| `server/prompts.js` | The instructions the app gives the model. |
-| `web/` | The web page you will use. |
-| `.env.example` | The settings file template. |
+| [`server/llm.js`](https://github.com/petecheslock/ai-study-guide/blob/main/server/llm.js) | The code that talks to the model server. |
+| [`server/prompts.js`](https://github.com/petecheslock/ai-study-guide/blob/main/server/prompts.js) | The instructions the app gives the model. |
+| [`web/`](https://github.com/petecheslock/ai-study-guide/tree/main/web) | The web page you will use. |
+| [`.env.example`](https://github.com/petecheslock/ai-study-guide/blob/main/.env.example) | The settings file template. |
 
 ## 3. Point the app at your model (10–15 minutes)
 
-Copy the settings template:
+Make a folder for the app's settings and create a file named `.env` in it.
+
+Mac Terminal:
 
 ```bash
-cp .env.example .env
+mkdir flashcards
+cd flashcards
+cat > .env <<'EOF'
+LLM_BASE_URL=http://host.containers.internal:17434/v1
+LLM_MODEL=gemma3:4b
+LLM_API_KEY=fake-api-key
+CARD_COUNT=15
+EOF
 ```
 
 Windows PowerShell:
 
 ```powershell
-Copy-Item .env.example .env
-```
-
-Open `.env` in an editor and change these lines:
-
-```
-LLM_BASE_URL=http://127.0.0.1:17434/v1
+mkdir flashcards
+cd flashcards
+@"
+LLM_BASE_URL=http://host.containers.internal:17434/v1
 LLM_MODEL=gemma3:4b
 LLM_API_KEY=fake-api-key
-VISION_MODEL=
-PORT=8888
 CARD_COUNT=15
+"@ | Set-Content -Encoding ascii .env
 ```
+
+Check the file with `cat .env` (Mac) or `Get-Content .env` (Windows).
 
 | Setting | Why |
 | --- | --- |
-| `LLM_BASE_URL` | The same server you called with `curl` and `ask.py` in the llmman tutorial. `/v1` is where the OpenAI-format API lives. |
+| `LLM_BASE_URL` | The same llmman server you called with `curl` and `ask.py` in the llmman tutorial. Inside a container, `127.0.0.1` means **the container itself**, not your laptop. `host.containers.internal` is Podman's name for your laptop. `/v1` is where the OpenAI-format API lives. |
 | `LLM_MODEL` | The model the server should use. |
 | `LLM_API_KEY` | Cloud services like OpenAI require a secret key. llmman ignores it, so any text works. We use `fake-api-key` to show where a real key would go. |
-| `VISION_MODEL` | Left empty, the app uses `LLM_MODEL` for photos too. Gemma 3 can read images. |
+| `CARD_COUNT` | How many cards to write per deck. |
 
-> **Never put a real API key in a file you push to GitHub.** `.env` is listed
-> in the app's `.gitignore` for exactly that reason.
+The app also reads `VISION_MODEL` (for photos) and `PORT`. Leave them out.
+Without `VISION_MODEL`, the app uses `LLM_MODEL` for photos too, and Gemma 3 can
+read images. **Do not set `PORT`:** the run command below expects the app on
+port 3000, its default.
 
-**Checkpoint:** your `.env` points at `127.0.0.1:17434`.
+> **Never put a real API key in a file you push to GitHub.** Pete's repository
+> lists `.env` in its `.gitignore` for exactly that reason.
+
+**Checkpoint:** your `.env` points at `host.containers.internal:17434`.
 
 ## 4. Run the app (15–20 minutes)
 
+From the `flashcards` folder, Mac Terminal:
+
 ```bash
-npm start
+podman run -d --name flashcards \
+  -p 3000:3000 \
+  --env-file .env \
+  -v flashcard-data:/app/data \
+  --restart unless-stopped \
+  ghcr.io/petecheslock/ai-study-guide:latest
+```
+
+Windows PowerShell (one line):
+
+```powershell
+podman run -d --name flashcards -p 3000:3000 --env-file .env -v flashcard-data:/app/data --restart unless-stopped ghcr.io/petecheslock/ai-study-guide:latest
+```
+
+| Option | What it does |
+| --- | --- |
+| `-d` | Runs the container in the background and gives you your terminal back. |
+| `--name flashcards` | Names the container so you can refer to it later. |
+| `-p 3000:3000` | Connects port 3000 on your laptop to port 3000 in the container. |
+| `--env-file .env` | Passes your settings into the container. |
+| `-v flashcard-data:/app/data` | Stores saved decks in a Podman **volume** named `flashcard-data`, so they survive if the container is removed. |
+| `--restart unless-stopped` | Restarts the app if it crashes, until you stop it yourself. |
+
+Check that it started:
+
+```bash
+podman logs flashcards
 ```
 
 You should see:
 
 ```text
-Flashcard Studio listening on http://0.0.0.0:8888
-LLM endpoint: http://127.0.0.1:17434/v1 (model: gemma3:4b, vision model: gemma3:4b)
+Flashcard Studio listening on http://0.0.0.0:3000
+LLM endpoint: http://host.containers.internal:17434/v1 (model: gemma3:4b, vision model: gemma3:4b)
 ```
 
-Open [http://localhost:8888](http://localhost:8888) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 **Checkpoint:** the upload page loads.
 
@@ -121,13 +212,14 @@ Open [http://localhost:8888](http://localhost:8888) in your browser.
 Open [`lobster-study-guide.md`](lobster-study-guide.md) from this folder, copy
 all of it, and paste it into the app. Click **Generate**.
 
-Watch both terminals while you wait. The model makes **two passes**:
+While you wait, run `podman logs -f flashcards` to watch the app work
+(press Ctrl+C to stop watching). The model makes **two passes**:
 
 1. It writes flashcards from the guide.
 2. It checks each card against the guide and fixes or drops any card the
    guide does not support.
 
-On our test laptop, a 10-card deck took about 30 seconds.
+On our test laptop, a 10-card deck took 20 to 30 seconds.
 
 Now study:
 
@@ -180,23 +272,22 @@ reads the image.
 
 ## 7. Clean up (45–50 minutes)
 
-Stop the app: press **Ctrl+C** in its terminal. Stop the model server: press
-**Ctrl+C** in the `llmman serve` terminal.
-
-Your saved decks are in `ai-study-guide/data/decks.json`. To remove the app,
-delete the whole `ai-study-guide` folder:
+Remove the app's container, its saved decks, and its image:
 
 ```bash
-cd ..
-rm -rf ai-study-guide
+podman rm -f flashcards
+podman volume rm flashcard-data
+podman rmi ghcr.io/petecheslock/ai-study-guide:latest
 ```
 
-Windows PowerShell:
+Then delete the `flashcards` settings folder: `cd ..` and `rm -rf flashcards`
+(Mac) or `Remove-Item -Recurse -Force flashcards` (Windows).
 
-```powershell
-cd ..
-Remove-Item -Recurse -Force ai-study-guide
-```
+Stop the model server: press **Ctrl+C** in the `llmman serve` terminal.
+
+If you want to keep Podman for later activities, stop the machine with
+`podman machine stop`. To remove the Podman machine and its disk entirely:
+`podman machine rm`.
 
 To remove llmman and the model too, follow
 [step 7 of the llmman tutorial](../llmman-tutorial/README.md#7-remove-everything-4550-minutes).
@@ -205,10 +296,13 @@ To remove llmman and the model too, follow
 
 | Symptom | Next step |
 | --- | --- |
-| `node: command not found`, or a version below 20.6 | Install the LTS version from [nodejs.org](https://nodejs.org/), then reopen the terminal. |
-| `npm start` says `node: .env: not found` | You skipped `cp .env.example .env`. Run it from inside the `ai-study-guide` folder. |
-| App starts but Generate fails with a connection error | The model server is not running. Start `llmman serve` in another terminal. |
-| `curl` to port 17434 says connection refused | Same as above. |
-| Generate takes several minutes | The model is loading into memory, or your laptop is busy. Close other apps. Lower `CARD_COUNT` to `8` in `.env` and restart the app. |
+| `podman: command not found` | Close and reopen the terminal after installing. |
+| `Cannot connect to Podman` | The Podman machine is not running. Run `podman machine start`. |
+| `podman run` says the name `flashcards` is already in use | You ran it before. Run `podman rm -f flashcards`, then run it again. Your decks are safe in the volume. |
+| `podman run` says `.env` not found | You are in the wrong folder. `cd` into `flashcards`. |
+| App starts but Generate fails with a connection error | The model server is not running, or `LLM_BASE_URL` still says `127.0.0.1`. Start `llmman serve`, check `.env`, then `podman rm -f flashcards` and run the container again. |
+| `curl` to port 17434 says connection refused | The model server is not running. Start `llmman serve` in another terminal. |
+| Browser cannot reach `localhost:3000` | Run `podman logs flashcards`. If it says `listening on ... :8888`, your `.env` sets `PORT`: delete that line and run the container again. |
+| Generate takes several minutes | The model is loading into memory, or your laptop is busy. Close other apps. Lower `CARD_COUNT` to `8` in `.env` and run the container again. |
 | "We can't see any study material there" | Your guide is too short. The app needs at least 80 characters and 12 words. |
-| Browser cannot reach `localhost:8888` | Check the app terminal for the port it printed. Another program may already use 8888: change `PORT` in `.env`. |
+| You changed `.env` but nothing changed | The container reads `.env` only when it is created. Run `podman rm -f flashcards`, then the `podman run` command again. |
