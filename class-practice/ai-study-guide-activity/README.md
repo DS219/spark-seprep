@@ -6,6 +6,8 @@ You will connect a real app, Pete Cheslock's
 server running on your laptop. The app reads a study guide, asks the model to
 write flashcards, asks it again to fact-check them, and then quizzes you.
 
+**App repository:** <https://github.com/petecheslock/ai-study-guide>
+
 Nothing in this activity needs an account or a payment.
 Your study guide never leaves your laptop.
 
@@ -104,7 +106,8 @@ This downloads Pete's app as a **container image** from the GitHub Container
 Registry (`ghcr.io`). The image already contains Node.js, the app's libraries,
 and its code. Nothing is installed on your laptop outside Podman.
 
-You can read the app's code on GitHub while it downloads:
+You can read the app's code in
+[Pete's repository](https://github.com/petecheslock/ai-study-guide) while it downloads:
 
 | Path | What it is |
 | --- | --- |
