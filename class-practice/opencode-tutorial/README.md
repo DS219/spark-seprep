@@ -73,8 +73,12 @@ No Gemini API key is required for this activity.
 
 ## 2. Interview and plan (8–15 minutes)
 
-Select **Plan** in the agent dropdown below the prompt. Plan is useful for
-discussion, but it is not a security sandbox. Continue to read any requested actions.
+OpenCode Desktop hides the Plan/Build picker by default. To show it, turn on
+**Settings → General → Show agent**, then select **Plan** in the picker below
+the prompt. (In the terminal version, press `Shift+Tab` to switch agents.)
+If the picker still doesn't appear, stay in Build. The prompt below tells the
+agent not to build yet, so planning still works. Plan is useful for discussion,
+but it is not a security sandbox. Continue to read any requested actions.
 
 Paste this prompt, replacing the bracketed text:
 
@@ -100,7 +104,7 @@ your goal into steps. You decide whether the plan meets your requirements.
 
 ## 3. Build and serve (15–27 minutes)
 
-Switch to **Build**, then send:
+If you used Plan, switch back to **Build**. Then send:
 
 ```text
 Implement the plan we agreed on. Also create AGENTS.md containing our project

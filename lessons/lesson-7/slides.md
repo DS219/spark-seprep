@@ -210,13 +210,13 @@ Source: https://opencode.school/lessons/models/
 
 **Build:** implement the agreed changes with tools.
 
-In Desktop, use the agent dropdown below the prompt.
+In Desktop, turn on **Settings → General → Show agent** to see the picker below the prompt.
 
 <p class="lede">Plan helps structure the work. Permissions still matter.</p>
 
 <!--
-Demo switching modes. The school warns that Plan is not a hard sandbox, so avoid claiming it guarantees zero side effects. Ask students to explain the intended file changes before switching to Build.
-Source: https://opencode.school/lessons/agents/
+Demo switching modes. Desktop hides the Plan/Build picker by default; turn on Settings > General > Show agent before class. Some Desktop versions have a bug where the picker never appears (GitHub issue 57812). If so, stay in Build and tell the agent not to change files yet. Terminal version: Shift+Tab switches agents. The school warns that Plan is not a hard sandbox, so avoid claiming it guarantees zero side effects. Ask students to explain the intended file changes before switching to Build.
+Source: https://opencode.school/lessons/agents/ and https://github.com/anomalyco/opencode/issues/59642
 -->
 
 ---

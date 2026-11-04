@@ -14,6 +14,12 @@ Reviewed October 14, 2026.
 - [Permissions](https://opencode.school/lessons/permissions/): allow/ask/deny.
 - [Agents](https://opencode.school/lessons/agents/): Plan/Build dropdown and the
   limitation that Plan is not a hard sandbox.
+- [OpenCode issue #59642](https://github.com/anomalyco/opencode/issues/59642) and
+  [#57812](https://github.com/anomalyco/opencode/issues/57812): Desktop hides the
+  Plan/Build picker until Settings → General → Show agent is on, and some versions
+  never show it. The terminal version switches agents with `Shift+Tab`. Checked
+  November 3, 2026, from maintainer replies, not official docs. Not tested on
+  a Desktop install.
 - [Build a website](https://opencode.school/exercises/build-a-website/): inspected
   in the enrolled browser. Original uses Hono, Tailwind CDN, and Cloudflare Workers.
   Classroom adaptation uses static files and a local HTTP server. No enrollment
