@@ -58,15 +58,37 @@ Collect answers on the board for 3 to 4 minutes before showing the next slide.
 
 ---
 
-# From real job postings
+# [Data and AI Engineer](https://www.indeed.com/viewjob?jk=6f672b26044ae87c) · The Brattle Group
 
-- [Job posting 1](https://www.indeed.com/viewjob?jk=04b24d10854e0c3e)
-- [Job posting 2](https://www.indeed.com/viewjob?jk=6f672b26044ae87c)
+Boston · early career, 0 to 3 years · $91k to $115k
 
-<p class="question">Which lines mention AI tools, planning, or working with others?</p>
+| The posting says | The skill |
+| --- | --- |
+| "Use AI-assisted development responsibly without treating generated output as automatically correct" | Verification |
+| "Comfort working in ambiguous problem spaces where the task may need to be clarified, decomposed, and revised" | Planning |
+| "Git, notebooks, code review, documentation, testing, and reproducible workflows" | Your repo |
+| "Explain technical work, assumptions, limitations, and next steps clearly" | Your pitch |
+
+<p class="lede">"Project-based experience may also be considered."</p>
 
 <!--
-Open each posting while signed in to Indeed (it requires sign-in). Read one or two lines out loud, then ask students which skills on the board they match. Real postings are more convincing than any slide. Postings expire; replace the links before reusing this deck.
+Start date July 2027: this is a role current students could apply for. Read the last line slowly: the project they start today counts. Ask: which of these lines could you show evidence for right now? Postings expire; replace before reusing this deck.
+-->
+
+---
+
+# [AI Engineer](https://www.indeed.com/viewjob?jk=04b24d10854e0c3e) · Boston contract
+
+| The posting says | The skill |
+| --- | --- |
+| "Build AI agents and integrate AI models with enterprise applications" | AI tools |
+| "Support the full AI development lifecycle, from solution design to deployment and monitoring" | Plan, build, ship |
+| "Strong problem-solving, documentation, and communication skills" | README and pitch |
+
+<p class="question">What's the same in both postings?</p>
+
+<!--
+Senior contract role ($68/hour), included to show the same skills appear above entry level. Expected answers: AI tools, design before building, documentation, communication. Nobody is asking for "can type code fast."
 -->
 
 ---
