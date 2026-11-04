@@ -101,10 +101,28 @@ Raleigh and Boston · internship
 | "Develop and prioritize and document requirements, epics, and user stories" | `SPEC.md` and your GitHub issues |
 | "Collaborate with engineering teams… to solve business problems" | Directing the agent |
 
-<p class="question">What's the same in all three postings?</p>
+<!--
+Not every tech job is writing code. This internship is almost exactly today's class: talk to users, write requirements, prioritize, work with engineers. Postings expire; replace before reusing this deck.
+-->
+
+---
+
+# [Technical Product Intern](https://redhat.wd5.myworkdayjobs.com/en-US/jobs/details/Technical-Product-Intern_R-059526-1) · Red Hat
+
+Raleigh · internship
+
+| The posting says | In this course |
+| --- | --- |
+| "Own a meaningful project end to end" | This project |
+| "Use AI tools to work smarter and faster" | OpenCode, llmman, Whisper |
+| "Build an automation demo that shows how teams simplify repetitive IT tasks" | Automate something you do daily |
+| "Familiarity with Linux, containers (Docker, Podman, Kubernetes)" | Earlier lessons |
+| "…project work where you created technical content, demos, or tutorials" | README, demo GIF, pitch |
+
+<p class="question">What's the same in all four postings?</p>
 
 <!--
-Not every tech job is writing code. This internship is almost exactly today's class: talk to users, write requirements, prioritize, work with engineers. Expected answers to the question: planning and design, communication, documentation, working with others and with AI. Nobody is asking for "can type code fast." Postings expire; replace before reusing this deck.
+Internal title is Technical Marketing Manager. Point out that students have already used Linux, Podman, and AI tools in this course; they can list those today. Expected answers to the question: planning and design, AI tools, communication and documentation, working with others. Nobody is asking for "can type code fast." Postings expire; replace before reusing this deck.
 -->
 
 ---
