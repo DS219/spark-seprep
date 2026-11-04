@@ -117,6 +117,10 @@ You can read the app's code on GitHub while it downloads:
 
 Make a folder for the app's settings and create a file named `.env` in it.
 
+> **Do not copy Pete's `.env.example`.** It is written for running the app
+> without a container. It sets `PORT=8888` and points at `127.0.0.1`, and
+> neither works inside a container. Use the settings below.
+
 Mac Terminal:
 
 ```bash
@@ -202,6 +206,16 @@ You should see:
 Flashcard Studio listening on http://0.0.0.0:3000
 LLM endpoint: http://host.containers.internal:17434/v1 (model: gemma3:4b, vision model: gemma3:4b)
 ```
+
+If the log says `:8888` or `127.0.0.1` instead, your `.env` is wrong. Fix it as
+shown in step 3, then recreate the container. The container reads `.env` only
+when it is created, so `podman restart` is not enough:
+
+```bash
+podman rm -f flashcards
+```
+
+Then run the `podman run` command again.
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
@@ -302,7 +316,7 @@ To remove llmman and the model too, follow
 | `podman run` says `.env` not found | You are in the wrong folder. `cd` into `flashcards`. |
 | App starts but Generate fails with a connection error | The model server is not running, or `LLM_BASE_URL` still says `127.0.0.1`. Start `llmman serve`, check `.env`, then `podman rm -f flashcards` and run the container again. |
 | `curl` to port 17434 says connection refused | The model server is not running. Start `llmman serve` in another terminal. |
-| Browser cannot reach `localhost:3000` | Run `podman logs flashcards`. If it says `listening on ... :8888`, your `.env` sets `PORT`: delete that line and run the container again. |
+| Browser cannot reach `localhost:3000` | Run `podman logs flashcards`. If it says `listening on ... :8888`, your `.env` sets `PORT`. Delete that line, run `podman rm -f flashcards`, then run the container again. |
 | Generate takes several minutes | The model is loading into memory, or your laptop is busy. Close other apps. Lower `CARD_COUNT` to `8` in `.env` and run the container again. |
 | "We can't see any study material there" | Your guide is too short. The app needs at least 80 characters and 12 words. |
 | You changed `.env` but nothing changed | The container reads `.env` only when it is created. Run `podman rm -f flashcards`, then the `podman run` command again. |
