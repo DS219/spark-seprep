@@ -119,10 +119,27 @@ Raleigh · internship
 | "Familiarity with Linux, containers (Docker, Podman, Kubernetes)" | Earlier lessons |
 | "…project work where you created technical content, demos, or tutorials" | README, demo GIF, pitch |
 
-<p class="question">What's the same in all four postings?</p>
+<!--
+Internal title is Technical Marketing Manager. Point out that students have already used Linux, Podman, and AI tools in this course; they can list those today. Postings expire; replace before reusing this deck.
+-->
+
+---
+
+# [Software Engineer Intern](https://redhat.wd5.myworkdayjobs.com/en-US/jobs/details/Software-Engineer-Intern_R-059038) · Red Hat
+
+Boston, Lowell, Raleigh, Durham · internship
+
+| The posting says | In this project |
+| --- | --- |
+| "Design, develop, and maintain code in Python, Golang or similar" | Your app |
+| "Add new features, debug, identify, and track issues" | GitHub issues and PRs |
+| "Collaborate with… Quality Engineering, Designers, Product Management or Documentation" | Partner swap, README |
+| "Passion, curiosity, and desire to create new things" | Something you'd use yourself |
+
+<p class="question">What's the same in all five postings?</p>
 
 <!--
-Internal title is Technical Marketing Manager. Point out that students have already used Linux, Podman, and AI tools in this course; they can list those today. Expected answers to the question: planning and design, AI tools, communication and documentation, working with others. Nobody is asking for "can type code fast." Postings expire; replace before reusing this deck.
+Even the software engineering internship lists design, issue tracking, and collaboration alongside writing code. Its curriculum also includes AI, GitHub, and Agile. Expected answers to the question: planning and design, AI tools, communication and documentation, working with others. Nobody is asking for "can type code fast." Postings expire; replace before reusing this deck.
 -->
 
 ---
