@@ -312,6 +312,8 @@ Common problems: "an app that manages my whole life," a login system, anything t
 
 **Planning comes from the prompt, not a button.** The prompt tells the agent not to change files yet, so it works in any mode.
 
+**Models:** OpenCode's free models, [TerrierGPT](https://myapps.bu.edu/apps/terriergpt) with your BU login, or your own paid subscription.
+
 <!--
 Optional Plan agent: Desktop hides the Plan/Build picker by default. Settings > General > Show agent makes it appear below the prompt. Some Desktop versions never show it (GitHub issue 57812). Terminal version: Shift+Tab. Don't spend class time on the picker.
 Source: https://github.com/anomalyco/opencode/issues/59642
