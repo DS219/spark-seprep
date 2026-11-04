@@ -53,7 +53,20 @@ class: text-center
 <p class="lede" style="margin: 1.5rem auto">Everyone has AI coding tools now.<br>What would you want to see?</p>
 
 <!--
-Collect answers on the board for 3 to 4 minutes before showing the next slide. Then read one line from each of the two or three real job postings you brought. Real postings are more convincing than any slide.
+Collect answers on the board for 3 to 4 minutes before showing the next slide.
+-->
+
+---
+
+# From real job postings
+
+- [Job posting 1](https://www.indeed.com/viewjob?jk=04b24d10854e0c3e)
+- [Job posting 2](https://www.indeed.com/viewjob?jk=6f672b26044ae87c)
+
+<p class="question">Which lines mention AI tools, planning, or working with others?</p>
+
+<!--
+Open each posting while signed in to Indeed (it requires sign-in). Read one or two lines out loud, then ask students which skills on the board they match. Real postings are more convincing than any slide. Postings expire; replace the links before reusing this deck.
 -->
 
 ---

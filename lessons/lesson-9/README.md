@@ -32,7 +32,7 @@ npm run export
 ## Before class
 
 - **Bring two or three real job postings** for junior or new-grad roles that
-  mention AI tools, coding assistants, or LLMs. Slide 3's speaker notes use them.
+  mention AI tools, coding assistants, or LLMs. Slide 4 links them; replace the links each term.
 - Check that **Settings → General → Show agent** shows the Plan/Build picker in
   your OpenCode Desktop version. The class works without it.
 - Decide the submission location and the Week 1 checkpoint points.
