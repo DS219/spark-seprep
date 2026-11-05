@@ -1,0 +1,7 @@
+FROM python:3.13-slim
+
+COPY coin_flip.py .
+
+RUN echo
+
+CMD ["python", "coin_flip.py"]
