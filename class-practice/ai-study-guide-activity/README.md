@@ -16,61 +16,19 @@ Your study guide never leaves your laptop.
 | | Requirement |
 | --- | --- |
 | llmman | Installed, with `gemma3:4b` downloaded. If you deleted it at the end of the llmman tutorial, redo [step 0](../llmman-tutorial/README.md#0-before-class-install-and-download-about-10-minutes) **before class**. |
-| Podman | Installed, with a Podman machine running. See step 0. |
+| Podman | Installed, with a Podman machine running. See [Install Podman on Mac or Windows](../podman-install.md). |
 | Memory | Same as the llmman tutorial: 8 GB RAM or more. |
 | Disk | About 1 GB free for the app's container image. |
 
 You do **not** need Node.js or git. The app comes ready to run as a container image.
 
-## 0. Before class: install Podman (about 15 minutes)
+## 0. Before class: install Podman (about 20 minutes)
 
-Skip this step if `podman machine list` already shows a machine.
+Follow [Install Podman on Mac or Windows](../podman-install.md). If you already
+have Podman and `podman machine list` shows a machine, just run
+`podman machine start`.
 
-On a Mac or Windows laptop, containers run inside a small Linux virtual machine
-called a **Podman machine**. You install Podman, then create and start that machine once.
-
-### Mac (Apple Silicon)
-
-1. Download the Podman installer (`.pkg`) for macOS from the
-   [Podman installation page](https://podman.io/docs/installation) and run it.
-   If you use Homebrew, `brew install podman` also works.
-2. Close and reopen **Terminal**, then check:
-
-   ```bash
-   podman --version
-   ```
-
-### Windows
-
-Podman on Windows runs on **WSL 2**, Microsoft's built-in Linux support.
-
-1. If you have never used WSL, open **PowerShell as Administrator** and run
-   `wsl --install`. Restart your computer when it asks.
-2. Download the Podman installer for Windows from the
-   [Podman installation page](https://podman.io/docs/installation) and run it.
-3. Close and reopen **PowerShell**, then check:
-
-   ```powershell
-   podman --version
-   ```
-
-### Create and start the Podman machine (Mac and Windows)
-
-```bash
-podman machine init
-podman machine start
-```
-
-`podman machine init` downloads the Linux virtual machine, so it takes a few minutes
-the first time. Then check that containers run:
-
-```bash
-podman run --rm quay.io/podman/hello
-```
-
-You should see a seal (the Podman mascot) and a hello message.
-
-**Checkpoint:** the hello container printed its message.
+**Checkpoint:** `podman run --rm quay.io/podman/hello` prints the hello message.
 
 ## 1. Start the model server (0–5 minutes)
 
