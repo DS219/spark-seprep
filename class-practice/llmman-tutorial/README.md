@@ -126,7 +126,8 @@ llmman ps
 ```
 
 This shows which models are loaded in memory right now. An idle model unloads
-after five minutes. The server itself keeps running until you stop it in step 8.
+after five minutes. The server itself keeps running until you stop it in step 7,
+even after you close the terminal chat.
 
 ## 3. Chat in the browser (10–20 minutes)
 
@@ -225,8 +226,9 @@ Do this even if you plan to use llmman again. You can reinstall in a minute.
 
 ```bash
 
-# 1. Stop the model server (this also stops the model it loaded)
-pkill -f "llmman serve"
+# 1. Stop the model server and the model it loaded
+pkill llmman
+pkill llama-server
 
 # 2. The program, the models, and everything llmman downloaded
 rm ~/.local/bin/llmman
@@ -275,7 +277,7 @@ by itself. You still need the delete commands above to free the disk space.
 
 `llmman serve` keeps a short log of the prompts it has seen in
 `prompts.jsonl` inside its data folder, so `llmman log` can show your history.
-It stays on your laptop and is deleted in step 8. To turn it off, set
+It stays on your laptop and is deleted in step 7. To turn it off, set
 `LLMMAN_NOHISTORY=1` before starting llmman.
 
 ## If something goes wrong
@@ -288,5 +290,6 @@ It stays on your laptop and is deleted in step 8. To turn it off, set
 | Download is very slow | Classroom Wi-Fi is shared. Pair with someone who downloaded at home. |
 | First reply takes a long time | The model is loading into memory. Later replies are faster. |
 | Browser page at port 17434 does not load | Run `llmman run gemma3:4b "hi"` first. That starts the server. |
-| Laptop gets slow or hot | That is the model using your GPU. Close other apps. Stop the server with step 7, part 2. |
+| `llmman serve` says `Address already in use` | A server is already running, maybe from days ago. Use it, or stop it and start again. Find it on Mac with `lsof -nP -iTCP:17434 -sTCP:LISTEN`, then `kill <PID>`. On Windows: `Get-NetTCPConnection -LocalPort 17434 -State Listen \| Select-Object OwningProcess`, then `Stop-Process -Id <PID>`. |
+| Laptop gets slow or hot | That is the model using your GPU. Close other apps. Stop the server with step 7, part 1. |
 | Out of disk space | Skip step 5. Run `llmman rm <name>` to delete a model. |

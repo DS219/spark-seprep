@@ -385,14 +385,14 @@ This happened in our own test run of the activity. A local model has no web sear
 | What | How |
 | --- | --- |
 | Chat app | `podman rm -f nextchat`, then `podman rmi` the image |
-| Model server | `pkill -f "llmman serve"` (Windows: `Stop-Process`) |
+| Model server | `pkill llmman` (Windows: `Stop-Process -Name llmman`) |
 | Program | Delete `llmman` from `~/.local/bin` |
 | Models and data | Delete `~/.local/share/llmman` |
 
 <p class="lede">Know what you installed, where it lives, and how to remove it.</p>
 
 <!--
-Full Mac and Windows commands, plus checks that should print nothing, are in step 8 of the activity. This is a professional habit: every tool you install on a work machine is something you are responsible for.
+Full Mac and Windows commands, plus checks that should print nothing, are in step 7 of the activity. This is a professional habit: every tool you install on a work machine is something you are responsible for.
 -->
 
 ---
