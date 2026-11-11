@@ -12,9 +12,9 @@ import os
 import time
 
 # Configuration from environment variables
-model_service = os.getenv("MODEL_ENDPOINT", "http://0.0.0.0:8888")
+model_service = os.getenv("MODEL_ENDPOINT", "http://host.containers.internal:17434")
 model_service = f"{model_service}/v1"
-model_name = os.getenv("MODEL_NAME", "phi4-mini-instruct")
+model_name = os.getenv("MODEL_NAME", "gemma3:4b")
 chunk_size = int(os.getenv("CHUNK_SIZE", "512"))
 chunk_overlap = int(os.getenv("CHUNK_OVERLAP", "50"))
 embedding_model = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
@@ -134,7 +134,7 @@ with st.sidebar:
     - Supports **PDF, TXT, and Markdown** files
     - Accepts **multiple file uploads**
     - Uses **pgvector** for document storage
-    - Runs **Phi4-mini** via ramalama
+    - Runs a local model via **llmman**
     - Retrieves relevant context before answering
     """)
 

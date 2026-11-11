@@ -13,6 +13,5 @@ podman pod rm $POD_NAME --force 2>/dev/null || echo "Pod not found"
 
 echo "✅ RAG Chatbot stopped and removed"
 echo ""
-echo "Note: The model volume 'rag-models' is preserved."
-echo "To remove it and free up space, run:"
-echo "  podman volume rm rag-models"
+echo "Note: llmman is still running on your laptop."
+echo "Stop it with Ctrl+C in its terminal."

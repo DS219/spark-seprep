@@ -14,7 +14,8 @@ RAG (Retrieval Augmented Generation) is a technique that enhances Large Language
 
 ## Architecture
 
-This tutorial runs three containers in a single pod:
+This tutorial runs two containers in a single pod. The model runs on your laptop with
+[llmman](../llmman-tutorial/README.md), outside the pod:
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -33,32 +34,38 @@ This tutorial runs three containers in a single pod:
 │  │  - Stores document embeddings            │   │
 │  │  - Vector similarity search              │   │
 │  └──────────────────────────────────────────┘   │
-│                      ↓                          │
-│  ┌──────────────────────────────────────────┐   │
-│  │  Ramalama Model Server (Port 8888)       │   │
-│  │  - Serves Phi4-mini-instruct             │   │
-│  │  - OpenAI-compatible API                 │   │
-│  └──────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────┘
+                       ↓  host.containers.internal:17434
+┌─────────────────────────────────────────────────┐
+│  Your laptop: llmman serve (Port 17434)         │
+│  - Serves gemma3:4b (or Phi-4-mini)             │
+│  - Uses your laptop's GPU                       │
+│  - OpenAI-compatible API                        │
 └─────────────────────────────────────────────────┘
 ```
 
 ### Components
 
 1. **PostgreSQL with pgvector**: Vector database that stores document embeddings and performs similarity search
-2. **Ramalama Model Server**: Serves the Phi4-mini-instruct model with an OpenAI-compatible API
-3. **Streamlit Application**: Web UI for uploading documents and chatting
+2. **Streamlit Application**: Web UI for uploading documents and chatting
+3. **llmman** (on your laptop, not in the pod): Serves the model with an OpenAI-compatible API.
+   Inside a container, `127.0.0.1` means the container itself, so the app reaches your
+   laptop at `host.containers.internal`, Podman's name for the host.
 
 ## Prerequisites
 
-- **Podman** installed ([Get Podman](https://podman.io/getting-started/installation))
-- At least 8GB of free disk space (for the model)
+- **Podman** installed, with a Podman machine running: see
+  [Install Podman on Mac or Windows](../podman-install.md)
+- **llmman** installed, with `gemma3:4b` downloaded: see
+  [step 0 of the llmman tutorial](../llmman-tutorial/README.md#0-before-class-install-and-download-about-10-minutes).
+  Optional: Phi-4-mini, from step 5 of that tutorial.
+- About 3 GB of free disk space for the app image
 - 8GB+ RAM recommended
-- Works on:
-  - macOS (Intel or Apple Silicon - M-series Macs will use Metal GPU acceleration automatically)
-  - Linux (with or without NVIDIA GPU)
-  - Windows with WSL2
+- Works on Apple Silicon Macs and Windows 11. llmman has no Intel Mac build.
 
-Note: Ramalama automatically detects and uses available GPUs for better performance!
+> **Before class:** run `podman build -t rag-chatbot-app:latest ./app` from this folder.
+> The image is about 2.2 GB (mostly PyTorch for the embedding model) and took about
+> 4 minutes to build on our test Mac. Classroom Wi-Fi is much slower.
 
 ## Two Ways to Learn
 
@@ -73,7 +80,15 @@ Choose your path below!
 
 ## Quick Start (Automated)
 
-### 1. Clone or Navigate to This Directory
+### 1. Start llmman and Navigate to This Directory
+
+In one terminal, start the model server and leave it running:
+
+```bash
+llmman serve
+```
+
+In a second terminal:
 
 ```bash
 cd rag-chatbot-tutorial
@@ -97,12 +112,13 @@ chmod +x start.sh
 ./start.sh
 ```
 
-The first run will:
-- Download the Phi4-mini-instruct model (~2.4GB) - this takes a few minutes
-- Build the chatbot application container
-- Start all three containers in a pod
+The script will:
+- Check that `llmman serve` is running
+- Build the chatbot application container (fast if you already built it)
+- Start both containers in a pod
 
-Subsequent runs will be much faster since the model is cached.
+`start.sh` is a bash script. On Windows, follow [MANUAL_SETUP.md](MANUAL_SETUP.md)
+in PowerShell instead, joining each multi-line command into one line.
 
 ### 4. Access the Chatbot
 
@@ -116,7 +132,7 @@ http://localhost:8501
 
 1. Click "Browse files" in the sidebar
 2. Upload a PDF or text file (try a technical document, article, or book chapter)
-3. Click "Process Document"
+3. Click "Process Documents"
 4. Wait for processing to complete
 5. Ask questions about your document in the chat!
 
@@ -153,7 +169,7 @@ The manual setup teaches you exactly what `start.sh` does automatically, one com
 4. **Storage**: Vectors are stored in PostgreSQL with the pgvector extension
 5. **Query**: When you ask a question, it's also converted to a vector
 6. **Retrieval**: The database finds the most similar document chunks
-7. **Generation**: The relevant chunks are sent to Phi4-mini-instruct as context
+7. **Generation**: The relevant chunks are sent to the model (Gemma 3 or Phi-4-mini) as context
 8. **Response**: The model generates an answer based on YOUR document
 
 ## Project Structure
@@ -181,9 +197,6 @@ rag-chatbot-tutorial/
 # Chatbot application logs
 podman logs rag-chatbot-app
 
-# Model server logs
-podman logs rag-chatbot-model
-
 # Database logs
 podman logs rag-chatbot-pgvector
 ```
@@ -204,50 +217,47 @@ podman pod ps
 podman ps --pod
 ```
 
-### Clean Up Everything (Including Model)
+### Clean Up Everything
 
 ```bash
 ./stop.sh
-podman volume rm rag-models  # Removes downloaded model
+podman rmi rag-chatbot-app:latest  # Removes the app image (about 2.2 GB)
 ```
+
+Then stop llmman with Ctrl+C. To remove llmman and its models, follow
+[step 7 of the llmman tutorial](../llmman-tutorial/README.md#7-remove-everything-4550-minutes).
 
 ## Troubleshooting
 
-### Model Server Taking Too Long
+### `start.sh` Says llmman Is Not Running
 
-The first run downloads ~2.4GB. Check progress:
-
-```bash
-podman logs -f rag-chatbot-model
-```
+Start it in another terminal with `llmman serve`, then run `./start.sh` again.
 
 ### Connection Errors in Chatbot
 
-Make sure all containers are running:
+Make sure both containers are running:
 
 ```bash
 podman ps --pod
 ```
 
-You should see 4 containers running (including the pod infra container).
+You should see 3 containers running (including the pod infra container). Then check
+that llmman is still running: `curl http://127.0.0.1:17434/v1/models`.
+
+### "model not found" Error
+
+`MODEL_NAME` must match a model llmman has downloaded. Run `llmman ls`. Use `gemma3:4b`,
+or `hf.co/unsloth/Phi-4-mini-instruct-GGUF` for Phi-4-mini (the short name `phi4-mini`
+does not work).
 
 ### Out of Memory
 
-Reduce the model context or use a smaller model. Edit `start.sh` and change the model to:
-
-```bash
-huggingface://TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
-```
+Close other apps, or switch to Phi-4-mini, which is smaller (2.5 GB vs 3.3 GB).
 
 ### Port Already in Use
 
-If port 8501 or 8888 is already in use, edit `.env`:
-
-```bash
-MODELSERVER_PORT=8889  # Change to different port
-```
-
-Then modify `start.sh` to change the UI port if needed.
+If port 8501 is already in use, change `--publish 8501:8501` in `start.sh`, for example
+to `--publish 8502:8501`, and open `http://localhost:8502`.
 
 ## Learning Objectives
 
@@ -258,21 +268,25 @@ By completing this tutorial, students will learn:
 3. **RAG Architecture**: How to combine retrieval with generation for better AI responses
 4. **LangChain**: Using LangChain for document processing and retrieval chains
 5. **Local AI Models**: Running AI models locally without cloud dependencies
-6. **API Integration**: How containers communicate within a pod
+6. **API Integration**: How containers communicate within a pod, and with a server on the host
 
 ## Customization Ideas
 
 ### Try Different Models
 
-Edit `start.sh` and change the model URL:
+Edit `MODEL_NAME` in `.env`, then run `./start.sh` again:
 
 ```bash
-# Mistral 7B (larger, slower, potentially better)
-huggingface://TheBloke/Mistral-7B-Instruct-v0.2-GGUF/mistral-7b-instruct-v0.2.Q4_K_M.gguf
+# Google Gemma 3, 4B parameters (default)
+MODEL_NAME=gemma3:4b
 
-# Llama 3 8B
-huggingface://QuantFactory/Meta-Llama-3-8B-Instruct-GGUF/Meta-Llama-3-8B-Instruct.Q4_K_M.gguf
+# Microsoft Phi-4-mini, 3.8B parameters
+# First run: llmman pull hf.co/unsloth/Phi-4-mini-instruct-GGUF
+MODEL_NAME=hf.co/unsloth/Phi-4-mini-instruct-GGUF
 ```
+
+Ask both models the same question about the same document and compare. In our test,
+Phi-4-mini answered in about 8 seconds and Gemma in about 18.
 
 ### Modify Chunk Size
 
@@ -307,7 +321,7 @@ return db.as_retriever(search_type="mmr", search_kwargs={"k": 4, "fetch_k": 10})
 
 - [LangChain Documentation](https://python.langchain.com/)
 - [pgvector GitHub](https://github.com/pgvector/pgvector)
-- [Ramalama Project](https://github.com/containers/ramalama)
+- [llmman](https://github.com/llmmanorg/llmman)
 - [Streamlit Documentation](https://docs.streamlit.io/)
 - [Understanding RAG](https://www.pinecone.io/learn/retrieval-augmented-generation/)
 
@@ -320,19 +334,18 @@ A: Yes! Everything runs locally. Your documents never leave your machine.
 A: Nothing! All components are open source and run locally.
 
 **Q: Will this work on my Mac M1/M2/M3?**
-A: Yes! Ramalama automatically detects and uses Metal acceleration on Apple Silicon for significantly better performance.
+A: Yes. Intel Macs are not supported because llmman has no Intel Mac build.
 
 **Q: Does this use GPU acceleration?**
-A: Yes! Ramalama automatically detects available GPUs:
-- On Apple Silicon Macs: Uses Metal (automatic, no configuration needed)
-- On Linux with NVIDIA GPUs: Uses CUDA if drivers are available
-- On systems without GPUs: Falls back to CPU (still works fine)
+A: Yes, for the model. llmman runs on your laptop, not in a container, so it can use
+the Mac's GPU (Metal). The embedding model inside the app container runs on CPU,
+which is fine for small documents.
 
 **Q: How accurate is it?**
 A: The quality depends on:
 - How well your question relates to the document content
 - The chunk size (too small = missing context, too large = irrelevant info)
-- The model's capabilities (Phi4-mini is good but not perfect)
+- The model's capabilities (small 4B models are good but not perfect)
 
 ## Next Steps
 
