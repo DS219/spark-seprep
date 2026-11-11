@@ -13,7 +13,7 @@ mkdir whisper-activity && cd whisper-activity
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install streamlit faster-whisper
+python -m pip install streamlit faster-whisper "av<19"
 ```
 
 On Windows PowerShell:
@@ -24,8 +24,10 @@ cd whisper-activity
 py -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install streamlit faster-whisper
+python -m pip install streamlit faster-whisper "av<19"
 ```
+
+The `av<19` constraint keeps PyAV compatible with `faster-whisper` 1.2.1. PyAV 19 removed an argument that this version still uses to open audio files; see the [upstream bug report](https://github.com/SYSTRAN/faster-whisper/issues/1589).
 
 We use [`Systran/faster-whisper-tiny`](https://huggingface.co/Systran/faster-whisper-tiny), a multilingual conversion of OpenAI's 39-million-parameter Whisper Tiny model. **Do not choose `tiny.en`: that one is English-only.** The first run downloads the model from Hugging Face; later runs use the cache. Tiny trades accuracy for a small download and CPU-friendly speed. If you have more time and a better connection, try changing `"tiny"` to `"base"` in the code and compare the result.
 
@@ -89,6 +91,7 @@ Replace `input.m4a` with your filename. Use quotes around filenames with spaces.
 ## Limits and troubleshooting
 
 - **Slow first run:** the model is downloading. Finish setup before class if possible; subsequent runs use the local cache.
+- **`TypeError: open() got an unexpected keyword argument 'metadata_errors'`:** stop Streamlit with Ctrl+C, activate this activity's `.venv`, run `python -m pip install "av<19"`, then restart with `python -m streamlit run app.py`. This is a dependency incompatibility, so converting the audio file will not fix it.
 - **Weak transcript or wrong language:** use a clear, short clip with one speaker and little background noise. Tiny can miss accents, names, code-switching, or quiet words. Its output is a guess, not a reliable record.
 - **File will not decode:** convert it to WAV with FFmpeg as above, then try again.
 - **No speech detected:** check that the clip plays in the app and contains audible speech, then try a different recording.
