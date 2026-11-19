@@ -14,8 +14,8 @@ the repository is public or shared with the instructor.
 
 | # | Checkpoint | Due | Points |
 | --- | --- | --- | ---: |
-| 1 | Idea and plan | **Tuesday, Dec 1** | 5 |
-| 2 | Repository structure | **Tuesday, Dec 1, before class** | 5 |
+| 1 | Idea and plan | **Wednesday, Dec 2, before class** | 5 |
+| 2 | Repository structure | **Wednesday, Dec 2, before class** | 5 |
 | 3 | It works, and someone else tried it | **Friday, Dec 4** | 20 |
 | 4 | 2-minute presentation | **Wednesday, Dec 9, last class** | 20 |
 | | **Total** | | **50** |
@@ -37,7 +37,7 @@ Work on branches and merge to `main` through pull requests, following our
 
 ## Checkpoint 1: Idea and plan (5 points)
 
-**Due Tuesday, Dec 1.**
+**Due Wednesday, Dec 2, before class.**
 
 Use an AI coding agent to turn your idea into a plan. A good starting prompt
 is the Lesson 9 starter prompt: describe your idea, ask the agent to question
