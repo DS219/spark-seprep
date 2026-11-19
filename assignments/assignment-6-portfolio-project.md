@@ -14,15 +14,14 @@ the repository is public or shared with the instructor.
 
 | # | Checkpoint | Due | Points |
 | --- | --- | --- | ---: |
-| 1 | Idea and plan | **Friday, Nov 20** | 10 |
-| 2 | Repository structure | **Wednesday, Dec 2, before class** | 10 |
-| 3 | It works, and someone else tried it | **Friday, Dec 4** | 20 |
-| 4 | 2-minute presentation | **Wednesday, Dec 9, last class** | 10 |
+| 1 | Idea and plan | **Tuesday, Dec 1** | 10 |
+| 2 | Repository structure | **Tuesday, Dec 1, before class** | 10 |
+| 3 | It works, and someone else tried it | **Friday, Dec 4** | 10 |
+| 4 | 2-minute presentation | **Wednesday, Dec 9, last class** | 20 |
 | | **Total** | | **50** |
 
 Work on branches and merge to `main` through pull requests, following our
-[class Git practices](../README.md). Grading uses what is on `main` at each
-due date.
+[class Git practices](../README.md). 
 
 ## Ground rules
 
@@ -36,9 +35,9 @@ due date.
 
 ---
 
-## Checkpoint 1: Idea and plan (10 points)
+## Checkpoint 1: Idea and plan (5 points)
 
-**Due Friday, Nov 20.**
+**Due Tuesday, Dec 1.**
 
 Use an AI coding agent to turn your idea into a plan. A good starting prompt
 is the Lesson 9 starter prompt: describe your idea, ask the agent to question
@@ -53,21 +52,20 @@ Add to your repository:
   the language/framework you chose.
 - `AGENTS.md`: the instructions and constraints you gave the agent, for
   example language, framework, "no secrets in code", "keep it small".
-- **3 to 5 GitHub Issues** covering the work needed for the MVP.
 
 In the Blackboard form, name the agent and model you used and paste one prompt
 that shaped your plan.
 
 | Points | Criteria |
 | ---: | --- |
-| 10 | Clear scope sentence; `SPEC.md` describes a small, buildable MVP with what's in and out of scope; `AGENTS.md` has real constraints; 3 to 5 specific issues; agent use described |
+| 10 | Clear scope sentence; `SPEC.md` describes a small, buildable MVP with what's in and out of scope; `AGENTS.md` has real constraints; agent use described |
 | 7 | Plan is present but vague, too large, or missing one of the items above |
 | 4 | Only a scope sentence or a minimal README; little evidence of planning |
 | 0 | Not submitted |
 
 ---
 
-## Checkpoint 2: Repository structure (10 points)
+## Checkpoint 2: Repository structure (5 points)
 
 **Due Wednesday, Dec 2, before class.**
 
@@ -101,14 +99,11 @@ Required:
 
 ---
 
-## Checkpoint 3: It works, and someone else tried it (20 points)
+## Checkpoint 3: It works, and someone else tried it (10 points)
 
 **Due Friday, Dec 4.**
 
 ### Does it work? (10 points)
-
-The instructor will follow **only your README** from a fresh clone. Your
-project should build, run, and do the one thing your scope sentence promises.
 
 Before submitting, test it yourself: clone your repo into a new folder, follow
 your README step by step, and fix anything that is missing.
@@ -128,13 +123,7 @@ project working.
 Get at least **one person besides you** (a classmate, roommate, friend, or family
 member) to use your project by following your README.
 
-- Record their feedback as a **GitHub Issue**. The tester can file it, or you
-  can file it and quote them. A first name is enough; do not post anyone's
-  private information.
-- **Act on at least one piece of feedback:** fix it in a PR that closes the
-  issue, or explain in the issue why you decided not to change it.
-
-In the Blackboard form, link the feedback issue(s) and the PR.
+- Record their feedback in the Blackboard form.
 
 | Points | Criteria |
 | ---: | --- |
@@ -149,18 +138,19 @@ In the Blackboard form, link the feedback issue(s) and the PR.
 
 **Wednesday, Dec 9, last class.**
 
+Suggestion:
+
 | Time | Part |
 | --- | --- |
-| 20 sec | **Problem:** who wastes time on what |
-| 60 sec | **Demo:** show it working |
+| 20 sec | **Problem:** what did you build? |
+| 60 sec | **Demo:** describe how it works |
 | 20 sec | **What a user told me:** one piece of feedback and the change it led to |
 | 20 sec | **Next:** one tradeoff you made and what you'd build next |
 
-The same pitch works in a job interview. Have your demo running before your
-turn; a recorded demo is a fine backup if the live one fails.
+If you will demo, have your demo running before your
+turn.
 
-In the Blackboard form, submit your repository URL and, if you used one, a link
-to your slide or recorded demo.
+In the Blackboard form, submit your repository URL and presentation notes (include the 4 points above) 
 
 | Points | Criteria |
 | ---: | --- |
