@@ -14,9 +14,9 @@ the repository is public or shared with the instructor.
 
 | # | Checkpoint | Due | Points |
 | --- | --- | --- | ---: |
-| 1 | Idea and plan | **Tuesday, Dec 1** | 10 |
-| 2 | Repository structure | **Tuesday, Dec 1, before class** | 10 |
-| 3 | It works, and someone else tried it | **Friday, Dec 4** | 10 |
+| 1 | Idea and plan | **Tuesday, Dec 1** | 5 |
+| 2 | Repository structure | **Tuesday, Dec 1, before class** | 5 |
+| 3 | It works, and someone else tried it | **Friday, Dec 4** | 20 |
 | 4 | 2-minute presentation | **Wednesday, Dec 9, last class** | 20 |
 | | **Total** | | **50** |
 
@@ -58,9 +58,9 @@ that shaped your plan.
 
 | Points | Criteria |
 | ---: | --- |
-| 10 | Clear scope sentence; `SPEC.md` describes a small, buildable MVP with what's in and out of scope; `AGENTS.md` has real constraints; agent use described |
-| 7 | Plan is present but vague, too large, or missing one of the items above |
-| 4 | Only a scope sentence or a minimal README; little evidence of planning |
+| 5 | Clear scope sentence; `SPEC.md` describes a small, buildable MVP with what's in and out of scope; `AGENTS.md` has real constraints; agent use described |
+| 3 | Plan is present but vague, too large, or missing one of the items above |
+| 2 | Only a scope sentence or a minimal README; little evidence of planning |
 | 0 | Not submitted |
 
 ---
@@ -81,7 +81,7 @@ Required:
   - any settings, such as `MODEL_URL`, and their defaults
 - **Source files** organized in a sensible layout, for example `src/` or a single
   well-named script for a small tool.
-- A **`Containerfile`** that builds and runs your project:
+- A **`Containerfile`** that builds and runs your project (optional):
   ```bash
   podman build -t my-project .
   podman run --rm my-project        # add -p PORT:PORT for a web app
@@ -92,9 +92,9 @@ Required:
 
 | Points | Criteria |
 | ---: | --- |
-| 10 | README is complete and accurate; source is organized; Containerfile builds; `.gitignore` present; no secrets or junk files; descriptive commits |
-| 7 | One or two items missing or incomplete, for example the README has no container steps or the Containerfile fails to build |
-| 4 | Repository has code but little structure or documentation |
+| 5 | README is complete and accurate; source is organized; `.gitignore` present; no secrets or junk files; descriptive commits |
+| 3 | One or two items missing or incomplete |
+| 2 | Repository has code but little structure or documentation |
 | 0 | Not submitted, or the repository is not accessible |
 
 ---
@@ -134,7 +134,7 @@ member) to use your project by following your README.
 
 ---
 
-## Checkpoint 4: 2-minute presentation (10 points)
+## Checkpoint 4: 2-minute presentation (20 points)
 
 **Wednesday, Dec 9, last class.**
 
@@ -154,9 +154,9 @@ In the Blackboard form, submit your repository URL and presentation notes (inclu
 
 | Points | Criteria |
 | ---: | --- |
-| 10 | Covers all four parts within about 2 minutes; working demo; can answer a question about how it works |
-| 7 | Missing one part or well over time; demo partly works |
-| 4 | Presented, but no demo and most of the parts are missing |
+| 20 | Covers all four parts within about 2 minutes; working demo; can answer a question about how it works |
+| 15 | Missing one part or well over time; demo partly works |
+| 10 | Presented, but no demo and most of the parts are missing |
 | 0 | Did not present |
 
 ---
